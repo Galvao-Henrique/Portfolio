@@ -515,5 +515,23 @@ nav .right a span {
     width: 240px;
     }
 
+        @media (max-width: 600px) {
+        nav {
+        padding: 0 10px;
+    }
+
+    nav .right a {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    nav .left a {
+        font-size: 18px;
+    }
+
+    nav .right a:last-child {
+        padding: 10px;
+    }
+    }
 
 }
