@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <!-- Configurações básicas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image/icons8/iconMe.png">
+
+    <!-- Google Fonts: Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet"> 
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Scripts adicionais -->
+    <script src="script.js"></script>
+
+    <!-- tsParticles para animação de fundo -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({ publicKey: "fei4wrtwTrtHob1t_" });
+        })();
+    </script>
+
+    <title>Portfólio</title>
+
+</head>
+
+<body>
+
+    <!-- Efeito de partículas -->
+    <div id="tsparticles"></div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="left">
+            <a href="">Henrique Galvão</a>
+        </div>
+        <div class="right">
+            <!-- GitHub -->
+            <a href="https://github.com/Galvao-Henrique" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>Github</span>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/henrique-galv%C3%A3o-freitas-pires/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>Linkedin</span>
+            </a>
+            <!-- Email -->
+            <a href="mailto:henriquepires114@gmail.com" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+    <!-- FIM NAVBAR -->
+
+    <main>
+        <!-- Seção Hero -->
+        <section class="hero-section">
+            <div class="text">
+                <h2>&lt;/Desenvolvedor de Software/&gt;</h2>                
+                <p>Meu nome é <span class="blue-skill">Henrique Galvão</span>, tenho 21 anos e sou estudante do 3º semestre de <span class="blue-skill">Ciência da Computação</span>. Estou em busca de uma <span class="blue-skill">oportunidade de estágio</span> para aplicar meus conhecimentos e continuar evoluindo na área. Tenho interesse em <span class="blue-skill">desenvolvimento de software</span>, <span class="blue-skill">segurança da informação</span> e <span class="blue-skill">novas tecnologias</span>. Sempre busco aprender novas habilidades e gosto de enfrentar desafios. Meu objetivo é <span class="blue-skill">crescer profissionalmente</span> e contribuir de forma significativa para a empresa.</p>
+                <div class="links">
+                    <a href="#Skills">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Skills</span>
+                    </a>
+                    <a href="#testimony">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>Sobre mim</span>
+                    </a>
+                    <a href="#contact">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Contato</span>
+                    </a>
+                    <a href="image/Curriculum/CRV-2025.pdf" download="HenriqueG.pdf">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Currículo</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="headshot">
+                <img src="image/20250503_201518 (1).jpg" alt="Herique">
+            </div>
+
+        </section>
+        <!-- FIM Hero -->
+
+        <!-- Seção Hard Skills -->
+        <section id="Skills" class="hard-skills-section">
+            <h2>Hard Skills</h2>
+            <div class="text">
+                Desde o início da graduação em Ciência da Computação, venho construindo uma base sólida em desenvolvimento de software. No primeiro semestre, tive meu primeiro contato com o desenvolvimento Front-end, aprendendo <span class="blue-skill">HTML</span>, <span class="blue-skill">CSS</span> e noções de <span class="blue-skill">JavaScript</span>, o que me permitiu compreender a estrutura e o comportamento de páginas web. Criei interfaces simples e funcionais, aplicando boas práticas de organização e semântica.<br>
+                <br>
+                No segundo semestre, aprofundei meus estudos em <span class="blue-skill">Python</span>, focando em lógica de programação, estruturas de controle, listas, dicionários e funções. Essa fase foi essencial para fortalecer meu raciocínio lógico e minha capacidade de resolver problemas por meio da programação. <br>
+                <br>
+                Atualmente, no terceiro semestre, estudo a linguagem <span class="blue-skill">Java</span>, com ênfase em programação orientada a objetos (POO). Tenho estudado conceitos como classes, métodos, construtores, herança e encapsulamento, além de praticar a aplicação desses princípios em projetos acadêmicos. Essa etapa tem ampliado minha compreensão sobre a estruturação de sistemas mais complexos e modulares. <br>
+                <br>
+                Ao longo dessa trajetória, venho desenvolvendo um perfil técnico versátil, com conhecimentos aplicáveis tanto no desenvolvimento web quanto na construção de soluções orientadas a objetos, sempre buscando evoluir com boas práticas de codificação e clareza na escrita de código.
+            </div>
+
+            <div class="cells">
+                <div class="cell"><img src="image/icons8/icons8-html5-48.webp" alt="html logo"><span>HTML</span></div>
+                <div class="cell"><img src="image/icons8/icons8-css-logo-48.webp" alt="css logo"><span>CSS</span></div>
+                <div class="cell"><img src="image/icons8/icons8-javascript-48.png" alt="python logo"><span>JavaScript</span></div>
+                <div class="cell"><img src="image/icons8/icons8-logo-java-coffee-cup-48.png" alt="java logo"><span>Java</span></div>
+                <div class="cell"><img src="image/icons8/icons8-python-48.webp" alt="python logo"><span>Python</span></div>
+            </div>
+
+        </section>
+        <!-- FIM Hard Skills -->
+
+        <!-- Seção Soft Skills -->
+        <section id="Skills" class="soft-skills-section">
+            <h2>Soft Skills</h2>
+         <div class="text">
+            Além do desenvolvimento técnico, também venho cultivando habilidades interpessoais essenciais para o ambiente acadêmico e profissional. Ao longo da graduação, participei de trabalhos em grupo, o que fortaleceu minha <span class="blue-skill">colaboração</span>, <span class="blue-skill">comunicação</span> e <span class="blue-skill">organização</span>. Nessas experiências, aprendi a lidar com prazos, dividir responsabilidades e adaptar minha forma de trabalho ao perfil dos colegas. <br>
+            <br>
+            Ao longo da minha trajetória, desenvolvi habilidades fundamentais como  <span class="blue-skill">disciplina</span>, <span class="blue-skill">organização</span>, <span class="blue-skill">persistência</span> e <span class="blue-skill">foco no cumprimento de metas</span>. Adquiri essas competências durante o período em que servi o Exército Brasileiro, entre 2023 e 2024, atuando na segurança e manutenção da ordem da Vila Militar. Essa vivência fortaleceu minha capacidade de seguir métodos e protocolos com atenção aos detalhes e foco em resultados concretos, além de aprimorar meu <span class="blue-skill">senso de responsabilidade</span> e <span class="blue-skill">trabalho em equipe</span>. <br>
+           <br>
+            A realização de projetos acadêmicos também exigiu <span class="blue-skill">proatividade</span>, <span class="blue-skill">resiliência</span> e <span class="blue-skill">pensamento crítico</span>, especialmente em momentos de tomada de decisão e resolução de problemas. Tenho facilidade em aprender de forma autônoma, buscando constantemente aprimorar meus conhecimentos e contribuir de forma efetiva nas atividades que assumo.
+        </div>
+
+        <div class="cells">
+            <div class="cell"><span>Responsabilidade</span></div>
+            <div class="cell"><span>Disciplina</span></div>
+            <div class="cell"><span>Trabalho em equipe</span></div>
+            <div class="cell"><span>Pensamento Crítico</span></div>
+        </div>
+
+        </section>
+        <!-- FIM Hard Skills -->
+        
+        <!-- Seção Sobre Mim -->
+        <section id="testimony" class="testimony-section">
+            <h2>Sobre Mim</h2>
+            <div class="group">
+                <div class="person-details">
+                    <img src="image/trophy.webp">
+                    <p><strong>X Desafio Unip</strong></p>
+                </div>
+                <div class="text">
+                    Desde o início da graduação, busco participar de projetos e desafios que expandam meu conhecimento e me preparem para os desafios do mercado de tecnologia. Logo no primeiro ano, participei do <span class="blue-skill">X Desafio UNIP</span>, uma competição entre os cursos de Computação e Engenharia. Junto com a equipe <span class="blue-skill">Vinci</span>, conquistamos o <span class="blue-skill">primeiro lugar</span> — uma experiência marcante de <span class="blue-skill">aprendizado</span> e <span class="blue-skill">trabalho em equipe</span>. <br>
+                    <br>
+                    Tenho grande interesse pela área de <span class="blue-skill">cibersegurança</span>, que venho estudando com foco no futuro profissional. Além disso, desenvolvi uma forte curiosidade por <span class="blue-skill">Java</span> e pelos conceitos de <span class="blue-skill">Programação Orientada a Objetos (POO)</span>. Essa curiosidade surgiu durante uma APS, onde desenvolvemos um <span class="blue-skill">quiz ambiental</span> em Java, utilizando os princípios de POO para organizar e estruturar o projeto. A clareza e o controle que a orientação a objetos oferece me motivaram a aprofundar cada vez mais nessa linguagem e paradigma. <br>
+                    <br>
+                    Outro projeto marcante foi o desenvolvimento de uma técnica de <span class="blue-skill">criptografia</span>, onde minha equipe escolheu implementar o algoritmo <span class="blue-skill">RSA</span> em <span class="blue-skill">Python</span>, <span class="blue-skill"> <a href="https://github.com/Galvao-Henrique/APS/tree/main/APS%20-%202%C2%B0Semestre">&lt;/Veja Aqui/&gt;</a></span>. Isso me proporcionou uma base sólida em <span class="blue-skill">segurança da informação</span> e aplicação prática de conceitos matemáticos e criptográficos. <br>
+                    <br>
+                    Também me dedico ao <span class="blue-skill">desenvolvimento web</span>, onde estou sempre buscando melhorar. Um exemplo foi a criação da <span class="blue-skill">segunda versão do meu portfólio</span>, onde reavaliei cada feedback recebido para torná-lo mais <span class="blue-skill">funcional</span>, <span class="blue-skill">responsivo</span> e <span class="blue-skill">visualmente atrativo</span>. <br>
+                    <br>
+                    Sou movido pela <span class="blue-skill">curiosidade</span> e pela vontade constante de <span class="blue-skill">aprender</span>. Cada novo desafio é uma oportunidade de <span class="blue-skill">crescimento técnico</span> e <span class="blue-skill">pessoal</span>.
+                </div>
+            </div>
+        </section>
+        <!-- FIM Sobre Mim -->
+
+        <!-- Seção Contato -->
+        <section id="contact" class="contact-section">
+            <h2>Contato</h2>
+            <div class="group">
+                <div class="text">
+                    <p>
+                        Se você chegou até aqui, saiba que este espaço vai além de um simples formulário, é uma <span class="blue-skill">forma alternativa</span> de se conectar comigo. Seja para trocar ideias, tirar dúvidas, sugerir melhorias ou discutir <span class="blue-skill">projetos</span>, estou sempre aberto a novas conexões e conversas significativas. <br>
+                        <br>
+                        Acredito que o <span class="blue-skill">conhecimento</span> cresce quando compartilhado, e muitas vezes grandes oportunidades nascem de uma simples mensagem. Então, se você tem uma <span class="blue-skill">proposta</span>, quer conversar sobre <span class="blue-skill">tecnologia</span>, está procurando alguém para colaborar ou apenas deseja saber mais sobre meu trabalho, não hesite em me chamar. <br>
+                        <br>
+                        Valorizo cada <span class="blue-skill">interação</span>, pois todo contato traz a possibilidade de <span class="blue-skill">aprendizado</span>, <span class="blue-skill">crescimento</span> e, quem sabe, de iniciarmos algo juntos. Farei o possível para responder o mais rápido possível, com atenção e interesse genuíno pelo que você tem a dizer. <br>
+                        <br>
+                        Vamos <span class="blue-skill">conversar</span>? Estou à disposição para ouvir, ajudar e construir.</p>
+                </div>
+                <form id="contact-form">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Mensagem</label>
+                    <textarea name="message" id="message" cols="30" rows="10" required></textarea>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+        <!-- FIM Contato -->
+
+        <!-- Script EmailJS (duplicado, mantenha apenas se necessário) -->
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function(){
+                emailjs.init("fei4wrtwTrtHob1t_");
+            })();
+        </script>
+
+        <!-- Script principal -->
+        <script src="script.js"></script>
+    </main>
+</body>
+</html>
