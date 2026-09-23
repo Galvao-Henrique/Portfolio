@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href=".././css/style.css" />
+    <script src=".././js/script.js"></script>
+    <link rel="shortcut icon" type="imagex/png" href="../imagens/ico.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap"
+      rel="stylesheet"
+    />
+    <title>Contato - Energia solar</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="./../imagens/eco-house.png" alt="" />
+      <nav>
+        <div>
+          <hr id="line" style="left: 100%; opacity: 0" />
+          <button
+            id="BtnInicio"
+            name="btn"
+            onclick="href('../index.html', 'index')"
+          >
+            Inicio
+          </button>
+          <button id="BtnSobre" name="btn">
+            Sobre
+            <div id="ExtraSobre">
+              <a href="./sobres/tipos.html">Tipos</a>
+              <a href="./sobres/funcionamento.html">Como funciona</a>
+              <a href="./sobres/beneficios.html">Beneficios</a>
+            </div>
+          </button>
+          <button
+            id="BtnContato"
+            name="btn"
+            onclick="href('contato.html' , 'contato')"
+          >
+            Contato
+          </button>
+          <button
+            id="BtnBibliografia"
+            name="btn"
+            onclick="href('bibliografia.html' , 'bibliografia')"
+          >
+            Bibliografia
+          </button>
+          <button
+            id="BtnAlunos"
+            name="btn"
+            onclick="href('alunos.html', 'alunos')"
+          >
+            Alunos
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="contato">
+      <div class="imagem-principal">
+        <div>
+          <h1>Contato</h1>
+        </div>
+      </div>
+      <article>
+        <p class="pages-texto">
+          Para sugestões ou informações sobre empresas que atuam no seu
+          munícipio, preencha os campos abaixo e nos envie uma mensagem!
+        </p>
+        <form>
+          <div>
+            <label for="nome">Nome</label>
+            <input
+              id="nome"
+              type="text"
+              name="txtnome"
+              size="40"
+              maxlength="50"
+            />
+          </div>
+          <div>
+            <label for="telefone">Telefone</label>
+            <input id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" />
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" type="email" required />
+          </div>
+          <div>
+            <label for="mensagem">Mensagem</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              placeholder="Deixe sua mensagem..."
+              rows="6"
+              cols="55"
+            ></textarea>
+          </div>
+          <br />
+          <button type="submit">Enviar</button>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>

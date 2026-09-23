@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MITATA</title>
+<meta name="description" content="Cortes selecionados, qualidade incomparável. Carnes premium para o seu churrasco, direto para a sua mesa. Peça pelo WhatsApp.">
+<meta name="keywords" content="carnes premium, açougue premium, picanha, carnes selecionadas, churrasco, carnes nobres, açougue online">
+<meta name="theme-color" content="#050505">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mitata Alimentos | Carnes Premium Selecionadas">
+<meta property="og:description" content="Cortes selecionados, qualidade incomparável e o cuidado que transforma cada refeição em uma experiência.">
+<meta property="og:image" content="image/banner1.jpg">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mitata Alimentos | Carnes Premium Selecionadas">
+<meta name="twitter:description" content="Cortes selecionados, qualidade incomparável e o cuidado que transforma cada refeição em uma experiência.">
+<meta name="twitter:image" content="image/banner1.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="image/Mlogo.png">
+<link rel="apple-touch-icon" href="image/Mlogo1.png">
+
+<!-- Google Fonts: Cormorant Garamond (display) + Montserrat (corpo/UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Dado estruturado para SEO local  -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  "name": "Mitata Alimentos",
+  "image": "image/banner1.jpg",
+  "telephone": "+5512997052003",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Adolpho Goll, 132",
+    "addressLocality": "São José dos Campos",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "08:00",
+    "closes": "19:00"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- Sprite SVG: marca registrada -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sear-mark" viewBox="0 0 32 32">
+    <line x1="4" y1="27" x2="15" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <line x1="12" y1="29" x2="23" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="31" x2="29" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<!-- =================== HEADER =================== -->
+<header class="header" id="header">
+  <div class="header__inner container">
+    <a href="#inicio" class="logo" aria-label="Mitata Alimentos - Início">
+      <img src="image/azul MitataHeader@4x.png" alt="Mitata Alimentos" class="logo__img">
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#inicio" class="nav__link">Início</a></li>
+        <li><a href="#carnes" class="nav__link">Nossos Cortes </a></li>
+        <li><a href="#categorias" class="nav__link">Categorias</a></li>
+        <li><a href="#sobre" class="nav__link">Sobre</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a href="https://wa.me/5512997052003" data-whatsapp class="icon-link" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+      <a href="#contato" class="btn btn-outline btn-sm">Fale Conosco</a>
+    </div>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#carnes">Nossos Cortes </a></li>
+      <li><a href="#categorias">Categorias</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="mobile-menu__social">
+      <a href="https://wa.me/5512997052003" data-whatsapp aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- =================== HERO =================== -->
+<section class="hero" id="inicio">
+  <div class="hero__bg">
+    <img id="heroImg" src="image/banner1.jpg" alt="Corte bovino premium com iluminação cinematográfica sobre superfície escura" loading="eager" fetchpriority="high">
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content container">
+    <span class="eyebrow" data-reveal>
+      <svg class="eyebrow__mark"><use href="#sear-mark"/></svg>
+      Qualidade Selecionada
+    </span>
+    <h1 class="hero__title" data-reveal data-reveal-delay="1">A ARTE<br>DE ESCOLHER<br>UM BOM CORTE</h1>
+    <p class="hero__subtitle" data-reveal data-reveal-delay="2">Cortes selecionados, qualidade incomparável e o cuidado que transforma cada refeição em uma experiência.</p>
+
+    <div class="hero__actions" data-reveal data-reveal-delay="3">
+      <a href="#carnes" class="btn btn-gold">Conheça Nossos Cortes </a>
+      <a href="https://wa.me/5512997052003" data-whatsapp class="btn btn-outline">Falar no WhatsApp</a>
+    </div>
+
+    <ul class="hero__trust" data-reveal data-reveal-delay="3">
+      <li>Cortes selecionados</li>
+      <li>Qualidade garantida</li>
+      <li>Atendimento especializado</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== CATEGORIAS =================== -->
+<section class="categories" id="categorias">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Nossas Categorias</span>
+      <h2 class="section-title">Seleção para<br>Todos os Momentos</h2>
+      <p class="section-text">Do churrasco de domingo às ocasiões especiais, encontre cortes selecionados para transformar cada refeição.</p>
+    </div>
+
+    <div class="category-grid">
+      <a href="#carnes" class="category-card" data-filter-target="bovinos" data-reveal>
+        <span class="category-card__index">01</span>
+        <h3>Bovinos</h3>
+        <p>Cortes selecionados</p>
+        <span class="card-arrow">Ver cortes <i class="ph ph-arrow-right"></i></span>
+      </a>
+
+      <a href="#carnes" class="category-card" data-filter-target="suinos" data-reveal>
+        <span class="category-card__index">02</span>
+        <h3>Suínos</h3>
+        <p>Maciez e sabor em cada peça</p>
+        <span class="card-arrow">Ver cortes <i class="ph ph-arrow-right"></i></span>
+      </a>
+
+      <a href="#carnes" class="category-card" data-filter-target="aves" data-reveal>
+        <span class="category-card__index">03</span>
+        <h3>Aves</h3>
+        <p>Leveza para o dia a dia</p>
+        <span class="card-arrow">Ver cortes <i class="ph ph-arrow-right"></i></span>
+      </a>
+
+      <a href="#carnes" class="category-card" data-filter-target="linguicas" data-reveal>
+        <span class="category-card__index">04</span>
+        <h3>Linguiças</h3>
+        <p>Receita artesanal, tempero autêntico</p>
+        <span class="card-arrow">Ver cortes <i class="ph ph-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== NOSSoS Cortes  (PRODUTOS + FILTRO) =================== -->
+<section class="products" id="carnes">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Nossos Cortes </span>
+      <h2 class="section-title">Os Melhores Cortes,<br>Selecionados Para Você</h2>
+    </div>
+
+    <div class="catalog-controls" data-reveal>
+      <div class="filters" role="tablist" aria-label="Filtrar cortes por categoria">
+        <button class="filter-btn is-active" data-filter="todos">Todos</button>
+        <button class="filter-btn" data-filter="bovinos">Bovinos</button>
+        <button class="filter-btn" data-filter="suinos">Suínos</button>
+        <button class="filter-btn" data-filter="aves">Aves</button>
+        <button class="filter-btn" data-filter="linguicas">Linguiças</button>
+      </div>
+      <label class="product-search" aria-label="Buscar corte pelo nome">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="text" id="productSearch" placeholder="Buscar corte (ex: picanha, fígado...)" autocomplete="off">
+      </label>
+    </div>
+
+    <p class="products-count" id="productsCount" aria-live="polite"></p>
+
+        <ul class="products-grid" id="productsGrid">
+
+      <li class="product-card product-card--featured" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Bovino Com Osso</span>
+        <h3>Boi Casado</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Boi Casado pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Bovino Com Osso</span>
+        <h3>Dianteiro de Boi</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Dianteiro de Boi pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Bovino Com Osso</span>
+        <h3>PA de Boi</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar PA de Boi pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Bovino Com Osso</span>
+        <h3>Traseiro de Boi</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Traseiro de Boi pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Miudo Bovino</span>
+        <h3>Fígado de Bovino</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Fígado de Bovino pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Miudo Bovino</span>
+        <h3>Língua Bovina</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Língua Bovina pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="bovinos" data-reveal>
+        <span class="product-card__category">Miudo Bovino</span>
+        <h3>Rumem de Bovino</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Rumem de Bovino pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Com Osso</span>
+        <h3>Costelinha Suína</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Costelinha Suína pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Com Osso</span>
+        <h3>Metade Suína</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Metade Suína pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Com Osso</span>
+        <h3>Pernil Suíno Com Pele e Com Osso</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Pernil Suíno Com Pele e Com Osso pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Com Osso</span>
+        <h3>Pé Suíno</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Pé Suíno pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Sem Osso</span>
+        <h3>Barriga Suína</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Barriga Suína pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Sem Osso</span>
+        <h3>Pernil Suíno Sem Pele e Sem Osso</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Pernil Suíno Sem Pele e Sem Osso pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="suinos" data-reveal>
+        <span class="product-card__category">Suíno Sem Osso</span>
+        <h3>Toucino Lombar Com Pele</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Toucino Lombar Com Pele pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Asa de Frango</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Asa de Frango pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Coxa Com Sobrecoxa</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Coxa Com Sobrecoxa pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Coxinha da Asa</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Coxinha da Asa pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Filé de Peito de Frango</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Filé de Peito de Frango pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Filé de Peito de Frango Empanado</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Filé de Peito de Frango Empanado pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Moela</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Moela pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Nuggets de Frango</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Nuggets de Frango pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="aves" data-reveal>
+        <span class="product-card__category">Aves</span>
+        <h3>Peito de Frango Com Osso</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Peito de Frango Com Osso pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="linguicas" data-reveal>
+        <span class="product-card__category">Linguiça</span>
+        <h3>Linguiça Toscana Aurora</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Linguiça Toscana Aurora pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+      <li class="product-card" data-category="linguicas" data-reveal>
+        <span class="product-card__category">Linguiça</span>
+        <h3>Linguiça Toscana Sadia</h3>
+        <a href="https://wa.me/5512997052003" data-whatsapp class="product-link" aria-label="Consultar Linguiça Toscana Sadia pelo WhatsApp">Ver Corte <i class="ph ph-arrow-up-right"></i></a>
+      </li>
+
+    </ul>
+
+    <p class="products-empty" id="productsEmpty" hidden>Nenhum corte encontrado nesta categoria no momento.</p>
+
+    <nav class="pagination" id="pagination" aria-label="Paginação de cortes"></nav>
+  </div>
+</section>
+
+<!-- =================== SEÇÃO DE DESTAQUE (CONFIANÇA) =================== -->
+<section class="trust">
+  <div class="container trust__grid">
+    <div class="trust__image" data-reveal data-reveal="scale">
+      <img src="image/boi.jpg" alt="Seleção criteriosa de carnes premium" loading="lazy">
+    </div>
+    <div class="trust__content">
+      <span class="eyebrow" data-reveal><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Nosso Compromisso</span>
+      <h2 class="section-title" data-reveal>Qualidade Que<br>Você Pode Confiar</h2>
+      <p class="section-text" data-reveal>Da seleção do corte até a sua mesa, cuidamos de cada detalhe para entregar carnes de qualidade, frescas e selecionadas.</p>
+      <span class="divider-gold" data-reveal></span>
+      <ul class="checklist" data-reveal>
+        <li><i class="ph ph-check"></i> Seleção Criteriosa</li>
+        <li><i class="ph ph-check"></i> Armazenamento Adequado</li>
+        <li><i class="ph ph-check"></i> Qualidade Garantida</li>
+        <li><i class="ph ph-check"></i> Atendimento Especializado</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =================== EXPERIÊNCIA / CHURRASCO =================== -->
+<section class="experience">
+  <div class="container experience__grid">
+    <div class="experience__content">
+      <span class="eyebrow" data-reveal><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Soluções Para Empresas</span>
+      <h2 class="section-title" data-reveal>Abastecimento De Qualidade<br>Para O Seu<br>Negócio.</h2>
+      <p class="section-text" data-reveal>Fornecemos carnes selecionadas para empresas, distribuidores e operações de atacado, com qualidade, regularidade e atendimento próximo.</p>
+      <a href="#carnes" class="btn btn-gold" data-reveal>Conheça Nossos Cortes</a>
+    </div>
+    <div class="experience__image" data-reveal data-reveal="scale">
+ <img src="image/vaca.jpg" alt="Carnes selecionadas para fornecimento empresarial" loading="lazy">    </div>
+  </div>
+</section>
+
+<!-- =================== SOBRE / ESSÊNCIA =================== -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about__head" data-reveal>
+      <span class="eyebrow"><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Nossa Essência</span>
+      <h2 class="section-title">Tradição, Qualidade e<br>Confiança em Cada Escolha.</h2>
+      <p class="section-text">Mais do que vender carnes, o nosso objetivo é oferecer produtos de qualidade e construir uma relação de confiança com cada cliente — do primeiro pedido ao próximo churrasco.</p>
+    </div>
+
+    <div class="stats" data-reveal>
+      <div class="stat">
+        <span class="stat__number"><span data-counter="50" data-prefix="+">0</span></span>
+        <span class="stat__label">Anos de Experiência</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number"><span data-counter="20" data-prefix="+">0</span></span>
+        <span class="stat__label">Cortes Disponíveis</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number"><span data-counter="100" data-prefix="+">0</span></span>
+        <span class="stat__label">Clientes Atendidos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== COMO COMPRAR =================== -->
+<section class="steps">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Como Comprar</span>
+      <h2 class="section-title">Simples, Rápido e<br>Sem Complicação</h2>
+    </div>
+
+    <div class="steps__grid">
+      <div class="step" data-reveal>
+        <span class="step__number">01</span>
+        <i class="ph ph-magnifying-glass step__icon"></i>
+        <h3>Escolha seu Corte</h3>
+        <p>Navegue pelas categorias e encontre o corte ideal para o seu momento.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="1">
+        <span class="step__number">02</span>
+        <i class="ph ph-whatsapp-logo step__icon"></i>
+        <h3>Faça seu Pedido</h3>
+        <p>Fale com a gente pelo WhatsApp e finalize o seu pedido com facilidade.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="2">
+        <span class="step__number">03</span>
+        <i class="ph ph-package step__icon"></i>
+        <h3>Receba ou Retire</h3>
+        <p>Combine a entrega ou retire pessoalmente, como for mais conveniente.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="3">
+        <span class="step__number">04</span>
+        <i class="ph ph-fire step__icon"></i>
+        <h3>Prepare e Aproveite</h3>
+        <p>Leve à mesa um resultado que só uma boa carne proporciona.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== WHATSAPP CTA =================== -->
+<section class="whatsapp-cta">
+  <div class="container">
+    <span class="eyebrow" data-reveal><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Fale Conosco Agora</span>
+    <h2 class="whatsapp-cta__title" data-reveal>O MELHOR<br>PARA SUA OPERAÇÃO</h2>
+    <p data-reveal>Qualidade, variedade e fornecimento para empresas que precisam de confiança todos os dias.</p>
+    <a href="https://wa.me/5512997052003" data-whatsapp class="btn btn-gold btn-lg" data-reveal>Fazer Pedido Pelo WhatsApp <i class="ph ph-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- =================== CONTATO =================== -->
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><svg class="eyebrow__mark"><use href="#sear-mark"/></svg>Fale Conosco</span>
+      <h2 class="section-title">Vamos Conversar Sobre<br>o Seu Próximo Pedido</h2>
+    </div>
+
+    <div class="contact__grid">
+      <div class="contact-info" data-reveal>
+        <ul>
+          <li>
+            <i class="ph ph-whatsapp-logo"></i>
+            <div><span>WhatsApp</span><a href="https://wa.me/5512997052003" data-whatsapp>(12) 99705-2003</a></div>
+          </li>
+          <li>
+            <i class="ph ph-map-pin"></i>
+            <div><span>Endereço</span><a href="https://www.google.com/maps/search/?api=1&query=Rua+Adolpho+Goll+132+Sao+Jose+dos+Campos+SP" target="_blank" rel="noopener">Rua Adolpho Goll, 132 - Sao Jose dos Campos - SP</a></div>
+          </li>
+          <li>
+            <i class="ph ph-clock"></i>
+            <div><span>Horário</span><p>Seg. a Sáb. — 8h às 19h</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="#inicio" class="logo">
+        <img src="image/azul Mitata@4x.png" alt="Mitata Alimentos" class="logo__img">
+      </a>
+      <p>Qualidade selecionada para quem valoriza o sabor.</p>
+      <div class="social-links">
+        <a href="https://wa.me/5512997052003" data-whatsapp aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+      </div>
+    </div>
+
+    <div class="footer__links">
+      <h4>Navegação</h4>
+      <a href="#inicio">Início</a>
+      <a href="#carnes">Carnes</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </div>
+
+    <div class="footer__links">
+      <h4>Contato</h4>
+      <a href="https://wa.me/5512997052003" data-whatsapp>(12) 99705-2003</a>
+    </div>
+  </div>
+
+  <span class="divider-gold footer__divider"></span>
+
+  <div class="container footer__bottom">
+    <p>© <span id="year"></span> Mitata Alimentos. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Botão flutuante do WhatsApp -->
+<a href="https://wa.me/5512997052003" data-whatsapp class="float-whatsapp" id="floatWhatsapp" aria-label="Falar no WhatsApp">
+  <i class="ph ph-whatsapp-logo"></i>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

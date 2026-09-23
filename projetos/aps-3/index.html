@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <title>APS 3° Semestre</title>
+</head>
+
+<body>
+   <div class="mapdiv">
+      <object id="mapa-brasil" data="Brasil.svg" type="image/svg+xml"></object>
+   </div>
+
+   <div class="map-text">
+      <h2>Cartografia Ambiental</h2>
+      <p>Descubra os Desafios e Caminhos Sustentáveis por Estado</p>
+   </div>
+
+ 
+   <aside class="hidden">
+    <div id="iniciarQuiz" class="hidden">
+      <button id="btn-quiz">Ir para o quiz</button>
+      <!-- <button id="btn-info">Informações</button> -->
+    </div>
+
+    <div id="quiz" class="hidden">
+      <form action="">
+        <ol id="perguntas">
+        </ol>
+        <button disabled id="proxBtn">Próxima</button>
+        <button disabled id="finalizar-quiz" class="hidden">Finalizar Quiz</button>
+      </form>
+    </div>
+
+    <div id="pontuacao" class="hidden">
+        <p>Sua pontuação foi <span></span></p>
+    </div>
+  </aside>
+
+<script src="script.js"></script>
+</body>
+</html>

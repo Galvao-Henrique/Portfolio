@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henrique Galvão — Portfólio</title>
+<meta name="description" content="Portfólio de Henrique Galvão, estudante de Ciência da Computação na Universidade Paulista.">
+<meta name="theme-color" content="#0D0D0E">
+<meta property="og:title" content="Henrique Galvão — Portfólio">
+<meta property="og:description" content="Ciência da Computação, front-end, back-end e cobertura de eventos de tecnologia.">
+<meta property="og:image" content="banner.jpeg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#sobre">Pular para o conteúdo</a>
+
+<!-- ======================= NAV ======================= -->
+<nav class="nav reveal reveal-nav" id="nav">
+  <a class="brand" href="#hero"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>Henrique Galvão</a>
+
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu">
+    <span></span><span></span>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#certificados">Certificados</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<!-- ======================= HERO =======================
+     Composição original preservada por pedido: foto de fundo
+     cheia, sidebar de vidro à direita e CTA no rodapé do hero.
+     Toda a página segue a mesma paleta dourada (grafite + latão).
+================================================================= -->
+<section class="hero" id="hero">
+
+  <div class="hero-photo-wrap reveal reveal-photo">
+    <img src="banner.jpg" class="hero-photo" alt="Henrique Galvão sorrindo em frente a um microfone, durante uma entrevista na Innovation Week 2026.">
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-content">
+      <div class="eyebrow-line reveal reveal-line"></div>
+      <h1 class="reveal reveal-heading">Eu sou o <span class="name-accent">Henrique</span>.<br>Tudo Bem?</h1>
+      <p class="lead reveal reveal-lead">Estudante de Ciência da Computação na Universidade Paulista. Escrevo front-end e back-end, estudo modelagem de dados e procuro meu primeiro estágio como desenvolvedor.</p>
+
+      <div class="hero-actions reveal reveal-button">
+        <a class="hero-work-link" href="#projetos">Conheça meu trabalho <span aria-hidden="true">→</span></a>
+        <a class="hero-secondary-link" href="cv.pdf" target="_blank" rel="noopener">Baixar currículo</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar reveal reveal-sidebar">
+    <div class="sidebar-block reveal-item" style="--i:0">
+      <h4>Sobre mim</h4>
+      <p>Estudante de Ciência da Computação em formação. Do primeiro troféu ao primeiro projeto profissional, venho conquistando aquilo que planejei para a minha carreira.</p>
+      <a class="link" href="#sobre"><span class="link-text">Saiba mais</span><span class="link-arrow">→</span></a>
+    </div>
+    <div class="divider reveal-item" style="--i:1"></div>
+    <div class="sidebar-block reveal-item" style="--i:1">
+      <h4>Meu trabalho</h4>
+      <p>Programação front-end e back-end, banco de dados na notação de James Martin e os fundamentos teóricos da computação.</p>
+      <a class="link" href="#projetos"><span class="link-text">Ver portfólio</span><span class="link-arrow">→</span></a>
+    </div>
+    <div class="divider reveal-item" style="--i:2"></div>
+    <div class="sidebar-block reveal-item" style="--i:2">
+      <h4>Minhas redes</h4>
+      <!-- Troque os href="#" pelos seus perfis reais -->
+      <div class="social-row">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.66 4.95 4.95.06 1.3.07 1.6.07 4.8s-.01 3.5-.07 4.8c-.15 3.28-1.65 4.8-4.95 4.95-1.3.06-1.6.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.67-4.95-4.95C2.08 15.6 2.07 15.3 2.07 12s.01-3.5.07-4.8C2.29 3.93 3.79 2.41 7.1 2.27 8.4 2.21 8.8 2.2 12 2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.17 1.17 0 100-2.34 1.17 1.17 0 000 2.34z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 8.98h4v12.02H3V8.98zm7 0h3.84v1.64h.05c.53-1 1.85-2.06 3.8-2.06 4.07 0 4.82 2.68 4.82 6.16v6.28h-4v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66h-4V8.98z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 016 0c2.4-1.6 3.4-1.2 3.4-1.2.7 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.7 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3z"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+</section>
+
+<main>
+
+<!-- ======================= SOBRE ======================= -->
+<section class="section about-section" id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-media fx">
+      <div class="about-photo">
+        <img src="eu.jpeg" onerror="this.onerror=null;this.src='banner.jpeg';" alt="Henrique Galvão" loading="lazy">
+      </div>
+    </div>
+
+    <div class="about-copy">
+      <span class="kicker kicker-lg fx">Sobre</span>
+      <h2 class="fx">Quem está por trás da <span class="shimmer-gold">tela</span>.</h2>
+
+      <div class="about-text fx">
+        <p>Sou estudante de Ciência da Computação na Universidade Paulista, em São José dos Campos – SP. Minha trajetória começou no Quartel, onde atuei por um ano na área de Comunicações, em Caçapava.</p>
+        <p>Depois disso, iniciei a faculdade dando continuidade pela área de tecnologia e comecei meus estudos em programação pelo front-end, com o passar dos semestres, fui expandindo meus conhecimentos para áreas como back-end, banco de dados, Inteligência Artificial, entre outras.</p>
+        <p>Atualmente, estou em busca da minha primeira oportunidade de estágio e no futuro, pretendo continuar minha formação com uma pós-graduação em Inteligência Artificial e Cibersegurança na Pontifícia Universidade Católica (PUC).</p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROJETOS ======================= -->
+<section class="section projects-section" id="projetos">
+  <div class="wrap">
+    <div class="section-head fx">
+      <span class="kicker kicker-lg">Projetos</span>
+      <h2>O que já <span class="shimmer-gold">coloquei</span> de pé.</h2>
+      <p class="section-sub">Meus projetos concluídos e os que estão em desenvolvimento, do primeiro contato com front-end até hoje.</p>
+    </div>
+
+    <!--
+      PARA ADICIONAR UM PROJETO:
+      1. copie um .project-row inteiro e ajuste número, id e aria-controls do botão;
+      2. ajuste o id e o aria-labelledby do project-panel correspondente;
+      3. o painel novo começa com o atributo hidden; só um fica visível por vez.
+    -->
+    <div class="project-cats" role="group" aria-label="Tipo de projeto">
+      <button type="button" class="project-cat is-on" data-cat="academico" aria-pressed="true">Acadêmicos <span class="project-cat-n"></span></button>
+      <button type="button" class="project-cat" data-cat="profissional" aria-pressed="false">Profissionais <span class="project-cat-n"></span></button>
+    </div>
+    <div class="project-index" role="tablist" aria-label="Projetos">
+
+      <div class="project-row fx" data-cat="academico">
+        <button class="project-tab" id="tab-fe" role="tab" aria-selected="false" aria-controls="painel-fe">
+          <span class="project-num">01</span>
+          <span class="project-title">Primeiro contato com front-end</span>
+          <span class="project-tab-meta">1º sem. 2024 · <span class="project-status">Concluído</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-fe" role="tabpanel" aria-labelledby="tab-fe" tabindex="0" hidden>
+          <p class="project-summary">Minhas primeiras páginas com HTML e CSS. É o ponto de partida da evolução que aparece nos projetos seguintes.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Aprender a estruturar e estilizar uma página do zero.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver no GitHub →</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>HTML</li><li>CSS</li>
+          </ul>
+          <div class="project-live">
+            <div class="monitor">
+              <div class="monitor-screen">
+                <div class="project-live-bar">
+                  <span class="project-live-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="project-live-url">APS · 1º semestre · energia solar</span>
+                  <a class="project-live-open" href="projetos/aps-1/index.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a>
+                </div>
+                <div class="monitor-view">
+                  <iframe class="project-live-frame" data-src="projetos/aps-1/index.html" title="Site do projeto APS do 1º semestre"></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="monitor-neck" aria-hidden="true"></div>
+            <div class="monitor-base" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="academico">
+        <button class="project-tab" id="tab-rsa" role="tab" aria-selected="false" aria-controls="painel-rsa" tabindex="-1">
+          <span class="project-num">02</span>
+          <span class="project-title">Criptografia RSA em Python</span>
+          <span class="project-tab-meta">2º sem. 2024 · <span class="project-status">Concluído</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-rsa" role="tabpanel" aria-labelledby="tab-rsa" tabindex="0" hidden>
+          <p class="project-summary">Implementação do algoritmo de criptografia RSA em Python: geração de chaves, cifragem e decifragem de mensagens.</p>
+          <p class="project-note">O teste abaixo é uma versão adaptada do código original para rodar no site, com a mesma lógica e um visual mais amigável. O código em Python está no GitHub.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Entender na prática como funciona a criptografia de chave pública.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" id="link-rsa" href="#" target="_blank" rel="noopener">Ver código original no GitHub →</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Python</li><li>Criptografia</li><li>RSA</li>
+          </ul>
+          <div class="rsa-demo" id="rsa-demo">
+            <div class="rsa-head">
+              <span class="rsa-tag">Teste na prática</span>
+              <button type="button" class="rsa-regen" id="rsa-gen">Resetar chaves ↻</button>
+            </div>
+            <div class="rsa-keys">
+              <div><span class="rsa-k">Chave pública (e n)</span><span class="rsa-v" id="rsa-pub">—</span></div>
+              <div><span class="rsa-k">Chave privada (d n)</span><span class="rsa-v" id="rsa-priv">—</span></div>
+            </div>
+
+            <div class="rsa-step">
+              <div class="rsa-step-body">
+                <div class="rsa-step-title">Criptografar</div>
+                <label class="rsa-label" for="rsa-in">Mensagem (até 128 caracteres)</label>
+                <input class="rsa-input" id="rsa-in" type="text" maxlength="128" value="Olá, recrutador!" autocomplete="off">
+                <label class="rsa-label" for="rsa-pubkey">Chave pública (formato xxxx xxxx)</label>
+                <input class="rsa-input rsa-mono" id="rsa-pubkey" type="text" autocomplete="off" spellcheck="false">
+                <button type="button" class="rsa-btn" id="rsa-enc">Criptografar</button>
+                <output class="rsa-out" id="rsa-cipher">—</output>
+              </div>
+            </div>
+
+            <div class="rsa-step">
+              <div class="rsa-step-body">
+                <div class="rsa-step-title">Descriptografar</div>
+                <label class="rsa-label" for="rsa-cin">Texto criptografado</label>
+                <textarea class="rsa-input rsa-mono" id="rsa-cin" rows="3" spellcheck="false"></textarea>
+                <label class="rsa-label" for="rsa-privkey">Chave privada (formato xxxx xxxx)</label>
+                <input class="rsa-input rsa-mono" id="rsa-privkey" type="text" autocomplete="off" spellcheck="false">
+                <button type="button" class="rsa-btn" id="rsa-dec">Descriptografar</button>
+                <output class="rsa-out" id="rsa-plain">—</output>
+              </div>
+            </div>
+            <p class="rsa-err" id="rsa-err" role="alert"></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="academico">
+        <button class="project-tab" id="tab-mapa" role="tab" aria-selected="false" aria-controls="painel-mapa" tabindex="-1">
+          <span class="project-num">03</span>
+          <span class="project-title">Sistema de questões ambientais do Brasil</span>
+          <span class="project-tab-meta">3º sem. 2025 · <span class="project-status">Concluído</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-mapa" role="tabpanel" aria-labelledby="tab-mapa" tabindex="0" hidden>
+          <p class="project-summary">Sistema com front-end, Java e banco de dados que usa um mapa em CSV para gerar questões sobre o meio ambiente nas regiões do Brasil.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Juntar interface, lógica e dados em um mesmo sistema.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver no GitHub →</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Java</li><li>Banco de dados</li><li>Front-end</li><li>CSV</li>
+          </ul>
+          <div class="project-live">
+            <div class="monitor">
+              <div class="monitor-screen">
+                <div class="project-live-bar">
+                  <span class="project-live-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="project-live-url">APS · 3º semestre · cartografia ambiental</span>
+                  <a class="project-live-open" href="projetos/aps-3/index.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a>
+                </div>
+                <div class="monitor-view">
+                  <iframe class="project-live-frame" data-src="projetos/aps-3/index.html" title="Site do projeto APS do 3º semestre"></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="monitor-neck" aria-hidden="true"></div>
+            <div class="monitor-base" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="academico">
+        <button class="project-tab" id="tab-poo" role="tab" aria-selected="false" aria-controls="painel-poo" tabindex="-1">
+          <span class="project-num">04</span>
+          <span class="project-title">Comparação de estruturas de dados em Java</span>
+          <span class="project-tab-meta">4º sem. 2025 · <span class="project-status">Concluído</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-poo" role="tabpanel" aria-labelledby="tab-poo" tabindex="0" hidden>
+          <p class="project-summary">Pesquisa comparativa com Java e POO usando pilha, fila e outras estruturas, medindo desempenho e rapidez com entradas de 10, 100 e 1000 números.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Verificar qual estrutura se comporta melhor conforme o volume de dados cresce.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver no GitHub →</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Java</li><li>POO</li><li>Estruturas de dados</li><li>Análise de desempenho</li>
+          </ul>
+          <div class="maze-demo" id="maze-demo">
+            <div class="rsa-head">
+              <span class="rsa-tag">Teste na prática · labirinto</span>
+              <button type="button" class="rsa-regen" id="maze-new">Novo labirinto ↻</button>
+            </div>
+            <div class="maze-controls">
+              <div class="maze-group" role="radiogroup" aria-label="Estrutura de dados">
+                <span class="rsa-label">Estrutura</span>
+                <div class="maze-seg">
+                  <button type="button" class="maze-opt is-on" data-algo="fila" aria-pressed="true">Fila</button>
+                  <button type="button" class="maze-opt" data-algo="pilha" aria-pressed="false">Pilha</button>
+                  <button type="button" class="maze-opt" data-algo="lista" aria-pressed="false">Lista</button>
+                </div>
+              </div>
+              <div class="maze-group">
+                <span class="rsa-label">Tamanho</span>
+                <div class="maze-seg">
+                  <button type="button" class="maze-size" data-size="11" aria-pressed="false">Pequeno</button>
+                  <button type="button" class="maze-size is-on" data-size="21" aria-pressed="true">Médio</button>
+                  <button type="button" class="maze-size" data-size="41" aria-pressed="false">Grande</button>
+                </div>
+              </div>
+              <button type="button" class="rsa-btn maze-run" id="maze-run">Resolver</button>
+            </div>
+            <p class="maze-desc" id="maze-desc"></p>
+            <div class="maze-stage"><canvas id="maze-canvas" aria-label="Labirinto"></canvas></div>
+            <div class="maze-stats">
+              <div><span class="rsa-k">Células visitadas</span><span class="rsa-v" id="maze-visited">—</span></div>
+              <div><span class="rsa-k">Tamanho do caminho</span><span class="rsa-v" id="maze-path">—</span></div>
+              <div><span class="rsa-k">Maior tamanho da estrutura</span><span class="rsa-v" id="maze-peak">—</span></div>
+            </div>
+            <div class="maze-history" id="maze-history" hidden>
+              <span class="rsa-label">Comparação neste labirinto</span>
+              <div class="maze-hist-rows" id="maze-hist-rows"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="academico">
+        <button class="project-tab" id="tab-chat" role="tab" aria-selected="false" aria-controls="painel-chat" tabindex="-1">
+          <span class="project-num">05</span>
+          <span class="project-title">Chat em rede com sockets</span>
+          <span class="project-tab-meta">5º sem. 2026 · <span class="project-status">Concluído</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-chat" role="tabpanel" aria-labelledby="tab-chat" tabindex="0" hidden>
+          <p class="project-summary">Chat cliente-servidor em Python. O servidor aceita várias equipes ao mesmo tempo com threads e sockets TCP, autentica cada uma em um banco SQLite e repassa mensagens de texto e imagens para o destinatário. O cliente roda no terminal, com telas de conexão, login e conversa feitas em Textual.</p>
+          <p class="project-note">O teste abaixo simula o funcionamento no navegador, com o mesmo protocolo do projeto: cada mensagem sai como tipo, destinatário, tamanho e conteúdo. O código original está no GitHub.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Entender comunicação em rede na prática: sockets, protocolo próprio em bytes, concorrência com threads e autenticação.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver código original no GitHub →</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Python</li><li>Sockets TCP</li><li>Threads</li><li>SQLite</li><li>Textual</li>
+          </ul>
+          <div class="chat-demo" id="chat-demo">
+            <div class="rsa-head">
+              <span class="rsa-tag">Teste na prática · duas equipes conectadas</span>
+              <button type="button" class="rsa-regen" id="chat-reset">Limpar conversa ↻</button>
+            </div>
+            <div class="chat-grid">
+              <div class="chat-term" data-me="1">
+                <div class="chat-term-bar"><span class="chat-dot"></span>Equipe Alfa <span class="chat-id">id 1</span></div>
+                <div class="chat-log" id="chat-log-1" aria-live="polite"></div>
+                <form class="chat-form" data-me="1">
+                  <input class="rsa-input rsa-mono" type="text" maxlength="200" placeholder="Mensagem para Equipe Beta…" autocomplete="off">
+                  <button type="submit" class="rsa-btn">Enviar</button>
+                </form>
+              </div>
+              <div class="chat-term" data-me="2">
+                <div class="chat-term-bar"><span class="chat-dot"></span>Equipe Beta <span class="chat-id">id 2</span></div>
+                <div class="chat-log" id="chat-log-2" aria-live="polite"></div>
+                <form class="chat-form" data-me="2">
+                  <input class="rsa-input rsa-mono" type="text" maxlength="200" placeholder="Mensagem para Equipe Alfa…" autocomplete="off">
+                  <button type="submit" class="rsa-btn">Enviar</button>
+                </form>
+              </div>
+            </div>
+            <div class="chat-server">
+              <div class="chat-term-bar"><span class="chat-dot is-srv"></span>Servidor · 0.0.0.0:8080</div>
+              <div class="chat-srv-log" id="chat-srv-log"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="academico">
+        <button class="project-tab" id="tab-bio" role="tab" aria-selected="false" aria-controls="painel-bio" tabindex="-1">
+          <span class="project-num">06</span>
+          <span class="project-title">Identificação e autenticação biométrica</span>
+          <span class="project-tab-meta">6º sem. 2026 · <span class="project-status is-wip">Em desenvolvimento</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-bio" role="tabpanel" aria-labelledby="tab-bio" tabindex="0" hidden>
+          <p class="project-summary">Desenvolvimento de um sistema de identificação e autenticação biométrica, projeto do semestre atual.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Identificar e autenticar pessoas a partir de dados biométricos.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver no GitHub →</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Em andamento</li>
+          </ul>
+          <div class="project-preview"><image-slot id="preview-bio" shape="rect" placeholder="Arraste aqui um print do projeto"></image-slot></div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="profissional">
+        <button class="project-tab" id="tab-mitata" role="tab" aria-selected="false" aria-controls="painel-mitata" tabindex="-1">
+          <span class="project-num">01</span>
+          <span class="project-title">Site da Mitata Alimentos</span>
+          <span class="project-tab-meta">2026 · <span class="project-status">Concluído</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-mitata" role="tabpanel" aria-labelledby="tab-mitata" tabindex="0" hidden>
+          <p class="project-summary">Site institucional para a Mitata Alimentos, distribuidora de carnes em São José dos Campos. Apresenta categorias e um catálogo de cortes com filtro, busca e paginação, além de uma seção para fornecimento a empresas. Os pedidos são feitos direto pelo WhatsApp.</p>
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Dar presença online à empresa e facilitar o contato do cliente até o pedido.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="projetos/mitata/index.html" target="_blank" rel="noopener">Abrir o site ↗</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>SEO</li><li>Responsivo</li>
+          </ul>
+          <div class="project-live">
+            <div class="monitor">
+              <div class="monitor-screen">
+                <div class="project-live-bar">
+                  <span class="project-live-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="project-live-url">mitata alimentos · carnes selecionadas</span>
+                  <a class="project-live-open" href="projetos/mitata/index.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a>
+                </div>
+                <div class="monitor-view">
+                  <iframe class="project-live-frame" data-src="projetos/mitata/index.html" title="Site da Mitata Alimentos"></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="monitor-neck" aria-hidden="true"></div>
+            <div class="monitor-base" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="profissional">
+        <button class="project-tab" id="tab-pessoal" role="tab" aria-selected="false" aria-controls="painel-pessoal" tabindex="-1">
+          <span class="project-num">02</span>
+          <span class="project-title">Projeto pessoal</span>
+          <span class="project-tab-meta">2026 · <span class="project-status is-wip">Em desenvolvimento</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-pessoal" role="tabpanel" aria-labelledby="tab-pessoal" tabindex="0" hidden>
+          <p class="project-summary">Projeto pessoal em desenvolvimento. Detalhes em breve.</p>
+          <div class="project-links">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver no GitHub →</a>
+          </div>
+          <div class="project-preview"><image-slot id="preview-pessoal" shape="rect" placeholder="Arraste aqui um print do projeto"></image-slot></div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HABILIDADES ======================= -->
+<section class="section skills-section" id="habilidades">
+  <div class="wrap">
+    <div class="section-head fx">
+      <span class="kicker">Habilidades</span>
+      <h2>As ferramentas que venho <span class="shimmer-gold">dominando</span>.</h2>
+      <p class="section-sub">Sem barrinha de porcentagem: ou eu entrego com isso, ou ainda estou aprendendo.</p>
+    </div>
+
+    <div class="skills-matrix fx">
+      <div class="skill-col">
+        <h3>Front-end</h3>
+        <ul class="tech-list">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bootstrap</li><li>Layout responsivo</li><li>Acessibilidade básica</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Back-end e dados</h3>
+        <ul class="tech-list">
+          <li>Python</li><li>Lógica de programação</li><li>Modelagem de dados</li><li>Notação de James Martin</li><li>SQL</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Ferramentas</h3>
+        <ul class="tech-list">
+          <li>Git</li><li>GitHub</li><li>VS Code</li><li>Figma</li>
+        </ul>
+      </div>
+      <div class="skill-col skill-col-learning">
+        <h3>Estudando agora</h3>
+        <!-- Edite esta lista conforme for avançando -->
+        <ul class="tech-list">
+          <li>React</li><li>Node.js</li><li>APIs REST</li><li>Testes</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="skills-note fx">Também trabalho bem no que não cabe em uma lista: comunicação, entrevista, edição de conteúdo e a paciência de documentar o que fiz para o próximo entender.</p>
+  </div>
+</section>
+
+<!-- ======================= CERTIFICADOS ======================= -->
+<section class="section section-certs" id="certificados">
+  <div class="wrap">
+    <div class="section-head fx">
+      <span class="kicker">Certificados</span>
+      <h2>Tudo o que estudei fora da grade.</h2>
+      <p class="section-sub">Clique em qualquer certificado para abrir o PDF original.</p>
+    </div>
+
+    <!--
+      OS CERTIFICADOS SÃO CADASTRADOS NO script.js, na lista CERTIFICADOS
+      (no começo do último bloco do arquivo). Coloque os PDFs na pasta
+      "Certificados/" ao lado do index.html e aponte o caminho lá.
+      Nada aqui precisa ser editado: a grade e a paginação se montam sozinhas,
+      6 certificados por vez (3 colunas x 2 linhas).
+    -->
+    <div class="cert-bar">
+      <div class="cert-filters" id="certFiltros" role="group" aria-label="Filtrar certificados"></div>
+      <p class="cert-count" id="certContagem"></p>
+    </div>
+
+    <div class="cert-grid" id="certGrid"></div>
+
+    <div class="cert-pagination" id="certPaginacao" hidden>
+      <button class="cert-page-btn" type="button" id="certPagAnterior" aria-label="Página anterior de certificados">&#8249; Anterior</button>
+      <span class="cert-page-info" id="certPagInfo"></span>
+      <button class="cert-page-btn" type="button" id="certPagProxima" aria-label="Próxima página de certificados">Próxima &#8250;</button>
+    </div>
+
+    <p class="cert-empty" id="certVazio" hidden>Nenhum certificado nesta categoria por enquanto.</p>
+
+    <noscript>
+      <p class="cert-empty">Ative o JavaScript para navegar pelos certificados, ou abra a pasta <code>Certificados/</code> direto.</p>
+    </noscript>
+
+    <div class="journey fx">
+      <h3 class="journey-title">Como cheguei até aqui</h3>
+
+      <!-- Para adicionar um marco, copie um item inteiro e mude ano, título e descrição. -->
+      <ol class="timeline">
+        <li>
+          <span class="year">2026</span>
+          <h4>Innovation Week 2026</h4>
+          <p>Cobertura do evento como criador de conteúdo: entrevistas com fundadores, pesquisadores e devs sobre o que está sendo construído agora.</p>
+        </li>
+        <li>
+          <span class="year">2026</span>
+          <h4>Formação em Cibersegurança</h4>
+          <p>Trilha de fundamentos de segurança da informação, com laboratórios práticos de ataque e defesa. <em>Substitua pelo nome e pela instituição corretos.</em></p>
+        </li>
+        <li>
+          <span class="year">2024</span>
+          <h4>Programming for Everybody</h4>
+          <p>Primeiro contato sério com Python, pela University of Michigan na Coursera. Foi o curso que me fez parar de copiar código e começar a entender o que estava acontecendo.</p>
+        </li>
+        <li>
+          <span class="year">2024</span>
+          <h4>Início da graduação</h4>
+          <p>Entrada no bacharelado em Ciência da Computação na Universidade Paulista. <em>Ajuste o ano se precisar.</em></p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTATO ======================= -->
+<section class="section contact-section" id="contato">
+  <div class="wrap contact-inner">
+    <div class="contact-main fx">
+      <span class="kicker">Contato</span>
+      <h2>Vamos conversar.</h2>
+      <p class="section-sub">Vaga de estágio, projeto freelance ou só uma troca de ideia sobre tecnologia: pode chamar. Respondo em até dois dias.</p>
+
+      <div class="email-row">
+        <!-- Troque pelo seu e-mail real (em dois lugares: no href e no texto) -->
+        <a class="email-link" id="emailLink" href="mailto:henrique@exemplo.com">henrique@exemplo.com</a>
+        <button class="copy-btn" id="copyEmail" type="button">Copiar</button>
+      </div>
+    </div>
+
+    <div class="contact-side fx">
+      <h3>Onde me encontrar</h3>
+      <ul class="contact-links">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">YouTube</a></li>
+      </ul>
+      <a class="btn-primary btn-on-light" href="#">Baixar currículo</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= RODAPÉ ======================= -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> Henrique Galvão. Feito à mão com HTML, CSS e JavaScript.</span>
+    <a class="to-top" href="#hero">Voltar ao topo</a>
+  </div>
+</footer>
+
+<!-- ======================= VISUALIZADOR DE CERTIFICADO ======================= -->
+<div class="cert-viewer" id="certViewer" hidden>
+  <div class="cert-viewer-backdrop" data-cert-close></div>
+
+  <div class="cert-viewer-box" role="dialog" aria-modal="true" aria-labelledby="certViewerTitle">
+    <header class="cert-viewer-head">
+      <div>
+        <h3 id="certViewerTitle"></h3>
+        <p id="certViewerMeta"></p>
+      </div>
+      <button class="cert-viewer-close" type="button" data-cert-close aria-label="Fechar certificado">&times;</button>
+    </header>
+
+    <div class="cert-viewer-frame" id="certViewerFrame"></div>
+
+    <p class="cert-viewer-hint">Não carregou? Abra o arquivo em uma nova aba.</p>
+
+    <footer class="cert-viewer-foot">
+      <div class="cert-viewer-nav">
+        <button class="cert-nav-btn" type="button" id="certPrev" aria-label="Certificado anterior">&#8249;</button>
+        <span id="certViewerCount"></span>
+        <button class="cert-nav-btn" type="button" id="certNext" aria-label="Próximo certificado">&#8250;</button>
+      </div>
+      <div class="cert-viewer-actions">
+        <a class="btn-ghost" id="certOpen" href="#" target="_blank" rel="noopener">Abrir em nova aba</a>
+        <a class="btn-ghost" id="certDownload" href="#" download>Baixar PDF</a>
+        <a class="btn-ghost" id="certVerify" href="#" target="_blank" rel="noopener" hidden>Verificar</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="image-slot.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

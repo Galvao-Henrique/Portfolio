@@ -1,0 +1,272 @@
+header {
+  background-color: rgba(253, 253, 253, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+body {
+  background-color: rgb(49 97 55 / 60%);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  color: rgb(49 97 55 / 60%);
+  display: flex;
+  margin-right: 20px;
+}
+
+nav button {
+  background-color: transparent;
+  border: none;
+  border-bottom: 5px transparent solid;
+  color: inherit;
+  cursor: pointer;
+  font-size: 22px;
+  list-style-type: none;
+  margin-right: 16px;
+  padding-inline: 5px;
+  transition: 0.5s;
+}
+
+nav button:hover {
+  color: rgba(19, 216, 45, 0.6);
+}
+
+nav hr {
+  display: flex;
+  position: absolute;
+  top: 45px;
+  height: 5px;
+  width: 60px;
+  border: none;
+  background-color: rgb(49 97 55 / 60%);
+  transition: 0.5s;
+}
+
+main {
+  background: #ffffff;
+  margin-top: 102px;
+  border-radius: 10px;
+  width: 720px;
+}
+
+main > article {
+  padding: 32px;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: "Lugrasimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+#BtnSobre:hover > #ExtraSobre {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+}
+
+#ExtraSobre {
+  border-radius: 4px;
+  transition: 0.5s;
+  opacity: 0;
+  height: auto;
+  padding: 8px;
+  position: absolute;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(253, 253, 253, 1);
+  grid-gap: 5px;
+  font-size: 20px;
+}
+#ExtraSobre a {
+  text-decoration: none;
+  color: rgb(49 97 55 / 60%);
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0 5px 0;
+  border-bottom: 10px solid transparent;
+}
+#ExtraSobre :hover {
+  transition: 0.5s;
+  color: rgba(19, 216, 45, 0.6);
+  border-bottom: 3px solid rgba(160, 218, 168, 0.6);
+}
+
+main.inicio section {
+  text-align: justify;
+}
+
+main.inicio section:last-child {
+  display: flex;
+}
+
+main > article section ul {
+  padding-right: 40px;
+}
+
+.pages-texto {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.pages-texto::first-letter {
+  color: #ebd343f2;
+  font-size: 126%;
+}
+
+.pages-img {
+  max-width: -webkit-fill-available;
+}
+
+.pages-img-principal {
+  border-radius: 10px 10px 0 0;
+  height: 460px;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  margin: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid #ebd343f2;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ebd343f2;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 50px;
+}
+.title > img {
+  width: 360px;
+  height: 150px;
+}
+
+.pages-texto-img img {
+  width: 250px;
+}
+
+.pages-list {
+  list-style-type: "";
+}
+.pages-list li {
+  margin: 10px;
+}
+li::before {
+  content: "☀ ";
+  color: #efcc00;
+}
+
+.pages-list li a {
+  color: #efcc00;
+  text-decoration: underline wavy;
+}
+
+.aluno {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 15px;
+  background-color: rgb(225, 225, 225);
+  color: #202020;
+  width: 220px;
+  height: 330px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  text-align: center;
+}
+
+.card > img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card > h2 {
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+main > .imagem-principal {
+  align-content: center;
+  background-image: url(../imagens/Fundo-Oeste-Solar-Vendas.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px 10px 0 0;
+  height: 460px;
+}
+
+.imagem-principal > div {
+  background-color: rgba(0, 0, 0, 0.375);
+  padding: 24px 0;
+}
+
+.imagem-principal > div > h1 {
+  color: #efcc00;
+  margin: 0;
+}
+
+main.bibliografia > .imagem-principal {
+  background-image: url(../videos/how-it-works.gif);
+}
+
+main.bibliografia > .imagem-principal > div > h1 {
+  color: #fff;
+  font-weight: bolder;
+}
+
+main.contato article form {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+}
+
+main.contato article form div {
+  font-size: 20px;
+  margin-bottom: 14px;
+  display: grid;
+}
+
+main.contato article form button {
+  align-self: center;
+  padding: 8px;
+  font-weight: bold;
+  color: rgb(49 97 55 / 60%);
+  border-radius: 13px;
+  font-size: 16px;
+  border-color: rgba(160, 218, 168, 0);
+}
+
+section figure {
+  text-align: center;
+  margin-bottom: 32px;
+}
