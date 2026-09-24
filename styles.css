@@ -988,3 +988,120 @@ body::after{
 /* ---------- FUNDO: ONDA 3D DOURADA (site inteiro) ---------- */
 .bg-wave{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; display:block;}
 main, .footer{position:relative; z-index:1;}
+
+/* =========================================================
+   RESPONSIVO — AJUSTES GERAIS (todas as telas)
+========================================================= */
+html,body{overflow-x:hidden;}
+img,video,canvas,iframe,svg{max-width:100%;}
+.wrap{padding-left:max(48px, env(safe-area-inset-left)); padding-right:max(48px, env(safe-area-inset-right));}
+
+/* Telas grandes */
+@media (min-width:1600px){
+  .wrap{max-width:1320px;}
+  .hero-content{max-width:700px;}
+  .hero-content .lead{font-size:18px; max-width:540px;}
+  .sidebar{width:300px;}
+}
+
+/* Notebooks / tablets na horizontal */
+@media (max-width:1180px){
+  .wrap{padding-left:40px; padding-right:40px;}
+  .hero-body{padding-left:40px; padding-right:40px;}
+  .hero-content{max-width:min(560px, calc(100% - 320px));}
+  .sidebar{right:40px; width:250px;}
+  .about-grid{gap:48px; grid-template-columns:minmax(0,300px) minmax(0,1fr);}
+  .about-copy{padding-left:24px;}
+  .skill-col{padding:28px 20px;}
+}
+
+/* Tablets */
+@media (max-width:980px){
+  .wrap{padding-left:24px; padding-right:24px;}
+  .hero{height:auto; min-height:0; display:flex; flex-direction:column;}
+  .hero-body{order:1; padding:24px 24px 28px;}
+  .hero-content{max-width:640px;}
+  .hero-photo-wrap{order:2; height:auto; aspect-ratio:4/3; max-height:460px; margin:0 24px 32px;}
+  .hero-photo{object-fit:cover; object-position:60% 30%; transform:none;}
+  .hero-photo-wrap::before{background:none;}
+  .sidebar{order:3; margin:0 24px; width:auto; right:auto;}
+  .sidebar::before{display:none;}
+  .about-grid{grid-template-columns:1fr; gap:40px;}
+  .about-media{max-width:340px; margin-left:18px;}
+  .about-copy{padding-left:0;}
+  .about-text, .about-stats{max-width:none;}
+  .project-tab{padding:24px 0;}
+  .project-summary{font-size:15.5px;}
+  .rsa-demo, .maze-demo, .chat-demo{padding:18px;}
+  .monitor-view{aspect-ratio:4/3;}
+  .timeline{padding-left:40px;}
+  .timeline li::before{left:-44px;}
+  .contact-main h2{max-width:none;}
+}
+
+/* Celulares */
+@media (max-width:640px){
+  body{font-size:15px;}
+  .wrap{padding-left:20px; padding-right:20px;}
+  .section{padding:72px 0;}
+  .about-section{padding-bottom:40px;}
+  .projects-section{padding-top:40px;}
+  .section-head{margin-bottom:32px;}
+  .nav{padding:18px 20px;}
+  .nav.is-stuck{padding:12px 20px;}
+  .brand{font-size:15px;}
+  .hero-body{padding:16px 20px 24px;}
+  .hero-content h1{font-size:clamp(32px,9vw,42px); letter-spacing:-1px;}
+  .hero-content .lead{font-size:15.5px;}
+  .eyebrow-line{margin:4px 0 20px;}
+  .hero-photo-wrap{margin:0 20px 28px; aspect-ratio:1/1;}
+  .sidebar{margin:0 20px;}
+  .about-media{max-width:none; margin:0 14px;}
+  .about-text p{text-align:left; font-size:15.5px;}
+  .stat-row{flex-wrap:wrap; gap:4px 16px;}
+  .stat-row .stat-value{text-align:left;}
+  .project-cats{gap:20px; overflow-x:auto; scrollbar-width:none;}
+  .project-cats::-webkit-scrollbar{display:none;}
+  .project-cat{white-space:nowrap; font-size:14px;}
+  .project-tab{grid-template-columns:32px minmax(0,1fr) 20px; gap:12px; padding:20px 0;}
+  .project-title{font-size:19px;}
+  .project-num{font-size:12px;}
+  .rsa-demo, .maze-demo, .chat-demo{padding:14px;}
+  .rsa-keys{grid-template-columns:1fr 1fr;}
+  .rsa-step-body .rsa-btn, .rsa-actions .rsa-btn{flex:1; align-self:stretch; text-align:center;}
+  .maze-stage{padding:8px;}
+  .maze-stats{grid-template-columns:1fr 1fr;}
+  .maze-hist-row{grid-template-columns:64px minmax(0,1fr) auto; gap:10px; font-size:11.5px;}
+  .project-live-bar{gap:10px; padding:7px 10px;}
+  .project-live-dots{display:none;}
+  .monitor{padding:6px; border-radius:8px;}
+  .monitor-view{aspect-ratio:3/4;}
+  .cert-filters{overflow-x:auto; flex-wrap:nowrap; width:100%; scrollbar-width:none;}
+  .cert-filter{white-space:nowrap;}
+  .cert-paper{padding:20px 18px;}
+  .timeline{padding-left:28px;}
+  .timeline li::before{left:-32px;}
+  .contact-main h2{font-size:clamp(30px,9vw,40px);}
+  .email-link{font-size:clamp(18px,6vw,26px); word-break:break-all;}
+  .email-row{gap:14px;}
+  .cert-viewer-head{padding:16px 18px 14px;}
+  .cert-viewer-head h3{font-size:17px;}
+}
+
+/* Celulares pequenos */
+@media (max-width:380px){
+  .wrap{padding-left:16px; padding-right:16px;}
+  .nav{padding:16px;}
+  .hero-body{padding-left:16px; padding-right:16px;}
+  .hero-photo-wrap, .sidebar{margin-left:16px; margin-right:16px;}
+  .hero-actions{flex-direction:column; align-items:stretch;}
+  .rsa-keys, .maze-stats{grid-template-columns:1fr;}
+  .project-cats{gap:16px;}
+}
+
+/* Telas baixas na horizontal (celular deitado) */
+@media (max-height:520px) and (orientation:landscape){
+  .hero{height:auto; min-height:0;}
+  .nav-links{gap:16px; font-size:17px;}
+  .hero-photo-wrap{max-height:70vh;}
+}

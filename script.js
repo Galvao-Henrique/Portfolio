@@ -1101,49 +1101,56 @@
 })();
 
 
-/* ---- Fundo: onda 3D de grãos dourados ---- */
+/* ---- Fundo: onda do mar vista de cima (partículas douradas) ----
+   Desenho direto em buffer de pixels (ImageData) para manter 60fps com muitas partículas. */
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var c = document.createElement('canvas');
   c.className = 'bg-wave'; c.setAttribute('aria-hidden', 'true');
   document.body.insertBefore(c, document.body.firstChild);
-  var ctx = c.getContext('2d'), W, H, dpr = Math.min(window.devicePixelRatio || 1, 2), pts = [], raf;
-  var COLS = 150, ROWS = 64;
+  var ctx = c.getContext('2d'), W, H, img, buf, N, PX, PY, PJ, PB, raf;
   function resize() {
     W = window.innerWidth; H = window.innerHeight;
-    c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var mobile = W < 700; COLS = mobile ? 80 : 150; ROWS = mobile ? 40 : 64;
-    pts = [];
-    for (var z = 0; z < ROWS; z++) for (var x = 0; x < COLS; x++)
-      pts.push({ u: x / (COLS - 1), v: z / (ROWS - 1), j: Math.random() });
+    c.width = W; c.height = H;
+    img = ctx.createImageData(W, H); buf = new Uint32Array(img.data.buffer);
+    N = Math.min(Math.round(W * H / 75), W < 700 ? 8000 : 22000);
+    PX = new Float32Array(N); PY = new Float32Array(N); PJ = new Float32Array(N); PB = new Uint8Array(N);
+    for (var i = 0; i < N; i++) { PX[i] = Math.random() * W; PY[i] = Math.random() * H; PJ[i] = 0.55 + Math.random() * 0.45; PB[i] = Math.random() < 0.35 ? 1 : 0; }
   }
+  // cores (little-endian ABGR): latão e latão claro
+  var GAP = 2400, BAND = 0.2, SPEED = 220;
+  var R0 = 219, G0 = 169, B0 = 79, R1 = 242, G1 = 205, B1 = 120;
   function frame(now) {
-    var t = now * 0.00035;
-    ctx.clearRect(0, 0, W, H);
-    var horizon = H * 0.38, fov = H * 0.9;
-    for (var i = 0; i < pts.length; i++) {
-      var p = pts[i];
-      var wx = (p.u - 0.5) * 6;           // largura do plano
-      var wz = 1 + p.v * 9;               // profundidade
-      var wy = Math.sin(wx * 1.1 + t * 2) * 0.35
-             + Math.sin(wz * 0.7 - t * 2.6) * 0.45
-             + Math.sin((wx + wz) * 0.45 + t * 1.4) * 0.3;
-      var s = fov / wz;
-      var sx = W / 2 + wx * s * 0.55;
-      var sy = horizon + (1.6 - wy) * s * 0.32;
-      if (sx < -4 || sx > W + 4 || sy < -4 || sy > H + 4) continue;
-      var crest = (wy + 1.1) / 2.2;       // 0 vale, 1 crista
-      var fade = Math.max(0, 1 - p.v * 0.95);
-      var a = (0.08 + crest * 0.55) * fade * (0.6 + p.j * 0.4);
-      if (a < 0.02) continue;
-      var r = Math.max(0.5, s * 0.006 * (0.7 + p.j * 0.6));
-      ctx.fillStyle = crest > 0.72 ? 'rgba(242,205,120,' + a.toFixed(3) + ')' : 'rgba(219,169,79,' + a.toFixed(3) + ')';
-      ctx.fillRect(sx, sy, r, r);
+    var t = now * 0.0004;
+    buf.fill(0);
+    for (var i = 0; i < N; i++) {
+      var x = PX[i], y = PY[i];
+      // cada onda é uma faixa curva que atravessa a tela; entre uma e outra, água calma
+      var perp = -x * 0.6 + y * 0.8;
+      var u = x * 0.8 + y * 0.6 + Math.sin(perp / 340 + t * 0.15) * 70 + Math.sin(perp / 150 - t * 0.2) * 18;
+      var f = ((u - t * SPEED) % GAP + GAP) % GAP / GAP;   // 0..1 dentro do ciclo
+      var cr;
+      if (f > BAND) { cr = 0; }
+      else {
+        var q = f / BAND;                                   // frente íngreme, costas suaves
+        cr = q > 0.82 ? (1 - q) / 0.18 : Math.pow(q / 0.82, 1.6);
+      }
+      var calm = 0.12 + Math.sin(x / 90 + t * 0.3) * Math.sin(y / 110 - t * 0.25) * 0.06;
+      var a = (cr > 0 ? 0.02 + cr * 0.42 : 0) * PJ[i];
+      if (a < 0.04) { if (PJ[i] > 0.93) a = calm * 0.45; else continue; }
+      var px = (x + cr * 6.4) | 0, py = (y + cr * 4.8) | 0;
+      if (px < 0 || py < 0 || px >= W - 1 || py >= H - 1) continue;
+      var A = (a * 255) | 0, hi = cr > 0.75;
+      var col = (A << 24) | ((hi ? B1 : B0) << 16) | ((hi ? G1 : G0) << 8) | (hi ? R1 : R0);
+      var k = py * W + px;
+      buf[k] = col;
+      if (PB[i]) { buf[k + 1] = col; buf[k + W] = col; buf[k + W + 1] = col; }
     }
+    ctx.putImageData(img, 0, 0);
     if (!reduce) raf = requestAnimationFrame(frame);
   }
   resize(); frame(0);
-  window.addEventListener('resize', function () { resize(); if (reduce) frame(0); });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { resize(); if (reduce) frame(0); }, 120); });
   document.addEventListener('visibilitychange', function () {
     if (reduce) return;
     if (document.hidden) cancelAnimationFrame(raf); else raf = requestAnimationFrame(frame);
