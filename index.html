@@ -8,11 +8,11 @@
 <meta name="theme-color" content="#0D0D0E">
 <meta property="og:title" content="Henrique Galvão — Portfólio">
 <meta property="og:description" content="Ciência da Computação, front-end, back-end e cobertura de eventos de tecnologia.">
-<meta property="og:image" content="banner.jpeg">
+<meta property="og:image" content="img/og.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -46,7 +46,7 @@
 <section class="hero" id="hero">
 
   <div class="hero-photo-wrap reveal reveal-photo">
-    <img src="banner.jpg" class="hero-photo" alt="Henrique Galvão sorrindo em frente a um microfone, durante uma entrevista na Innovation Week 2026.">
+    <img src="img/banner.webp" class="hero-photo" fetchpriority="high" alt="Henrique Galvão sorrindo em frente a um microfone, durante uma entrevista na Innovation Week 2026.">
   </div>
 
   <div class="hero-body">
@@ -96,7 +96,7 @@
   <div class="wrap about-grid">
     <div class="about-media fx">
       <div class="about-photo">
-        <img src="eu.jpeg" onerror="this.onerror=null;this.src='banner.jpeg';" alt="Henrique Galvão" loading="lazy">
+        <img src="img/eu.webp" alt="Henrique Galvão" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -477,7 +477,7 @@
     <article class="achievement about-grid">
       <div class="about-media fx">
       <div class="about-photo">
-        <img src="trofeu.jpg" alt="Troféu de campeão do X Desafio UNIP, Competição de Programação Prof. Paulo Roberto Travassos, 2024." loading="lazy">
+        <img src="img/trofeu.webp" decoding="async" alt="Troféu de campeão do X Desafio UNIP, Competição de Programação Prof. Paulo Roberto Travassos, 2024." loading="lazy">
       </div>
       </div>
       <div class="achievement-body about-copy fx">
@@ -571,34 +571,31 @@
 
     <p class="cert-empty" id="certVazio" hidden>Nenhum certificado nesta categoria por enquanto.</p>
 
-    <noscript>
-      <p class="cert-empty">Ative o JavaScript para navegar pelos certificados, ou abra a pasta <code>Certificados/</code> direto.</p>
-    </noscript>
 
     <div class="journey fx">
       <h3 class="journey-title">Como cheguei até aqui</h3>
 
       <!-- Para adicionar um marco, copie um item inteiro e mude ano, título e descrição. -->
-      <ol class="timeline">
+      <ol class="timeline road" id="road">
         <li>
-          <span class="year">2026</span>
-          <h4>Innovation Week 2026</h4>
-          <p>Cobertura do evento como criador de conteúdo: entrevistas com fundadores, pesquisadores e devs sobre o que está sendo construído agora.</p>
-        </li>
-        <li>
-          <span class="year">2026</span>
-          <h4>Formação em Cibersegurança</h4>
-          <p>Trilha de fundamentos de segurança da informação, com laboratórios práticos de ataque e defesa. <em>Substitua pelo nome e pela instituição corretos.</em></p>
+          <span class="year">2023</span>
+          <h4>Soldado no 6º Batalhão de Infantaria Leve</h4>
+          <p>Início profissional no começo de 2023, em Caçapava. Servi na 12ª Companhia de Comunicações Leve, onde atuei na área de comunicações e na manutenção das viaturas especializadas. Aprimorei competências como trabalho em equipe, responsabilidade, disciplina, organização, proatividade e comprometimento com resultados.</p>
         </li>
         <li>
           <span class="year">2024</span>
-          <h4>Programming for Everybody</h4>
-          <p>Primeiro contato sério com Python, pela University of Michigan na Coursera. Foi o curso que me fez parar de copiar código e começar a entender o que estava acontecendo.</p>
+          <h4>Início da faculdade</h4>
+          <p>Depois de concluir o serviço militar no começo de 2024, iniciei a faculdade. Nesse ano letivo aprendi novas linguagens e aprimorei a lógica de programação, fui campeão de um desafio de programação e fiz projetos significativos para minha carreira.</p>
         </li>
         <li>
-          <span class="year">2024</span>
-          <h4>Início da graduação</h4>
-          <p>Entrada no bacharelado em Ciência da Computação na Universidade Paulista. <em>Ajuste o ano se precisar.</em></p>
+          <span class="year">2025</span>
+          <h4>O ano de estudo mais complexo</h4>
+          <p>Banco de dados, notação de James Martin, protocolos e redes, TCP e TCP/IP, entre outros. Foi o ano em que passei a entender como os sistemas se organizam por dentro: da modelagem dos dados até a forma como a informação trafega entre máquinas.</p>
+        </li>
+        <li>
+          <span class="year">2026</span>
+          <h4>Projetos profissionais e estudos avançados</h4>
+          <p>Mais projetos profissionais e freelances, junto com estudos avançados em imagens e processamento, cálculo computacional, entre outros. Comecei a atender clientes reais, lidando com prazos, requisitos e entregas, e a aplicar na prática o que venho estudando na faculdade.</p>
         </li>
       </ol>
     </div>

@@ -518,15 +518,6 @@
   var atual = 0;
   var ultimoFoco = null;
 
-  function iniciais(texto) {
-    return (texto || '?')
-      .split(/[\s\-—]+/)
-      .filter(function (p) { return p.length > 2 || /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(p); })
-      .slice(0, 2)
-      .map(function (p) { return p.charAt(0).toUpperCase(); })
-      .join('') || '•';
-  }
-
   function el(tag, classe, texto) {
     var n = document.createElement(tag);
     if (classe) n.className = classe;
@@ -545,26 +536,23 @@
     btn.setAttribute('aria-label', 'Abrir certificado: ' + cert.titulo);
 
     var papel = el('span', 'cert-paper');
-    var topo = el('span', 'cert-paper-top');
-    topo.appendChild(el('span', 'cert-seal', iniciais(cert.emissor)));
-    topo.appendChild(el('span', 'cert-cat', cert.categoria || ''));
-    papel.appendChild(topo);
-
-    papel.appendChild(el('span', 'cert-name', cert.titulo));
-
-    var rodape = el('span', 'cert-paper-foot');
-    rodape.appendChild(el('span', 'cert-issuer', cert.emissor));
-    rodape.appendChild(el('span', 'cert-year', cert.data || cert.ano || cert.plataforma || ''));
-    papel.appendChild(rodape);
-
     btn.appendChild(papel);
-    if (cert.arquivo) previaReal(cert, papel);
+    var gerar = function () { previaReal(cert, papel); };
+    if (gradePerto) gerar(); else pendentes.push(gerar);
     return btn;
   }
 
-  /* ---- Prévia real: renderiza a 1ª página do PDF original no card ---- */
+  /* ---- Prévia real: 1ª página do PDF original, gerada uma vez e guardada ----
+     Só começa quando a seção chega perto da tela, um PDF por vez e nos
+     momentos livres do navegador, para a rolagem não travar. Nas próximas
+     visitas a prévia sai do cache do navegador, sem gerar de novo. */
   var cachePrevia = {};
+  var filaPrevias = Promise.resolve();
+  var CACHE_PREVIAS = 'hg-cert-previas-v1';
   var pdfjsPromise = null;
+  var ocioso = window.requestIdleCallback
+    ? function (f) { window.requestIdleCallback(f, { timeout: 1500 }); }
+    : function (f) { setTimeout(f, 60); };
   function carregarPdfjs() {
     if (!pdfjsPromise) {
       var base = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/';
@@ -575,33 +563,85 @@
     }
     return pdfjsPromise;
   }
-  function gerarPrevia(url) {
-    if (cachePrevia[url]) return cachePrevia[url];
-    cachePrevia[url] = carregarPdfjs().then(function (lib) {
+  function renderizarPdf(url) {
+    return carregarPdfjs().then(function (lib) {
       return lib.getDocument(encodeURI(url)).promise;
-    }).then(function (doc) { return doc.getPage(1); }).then(function (page) {
-      var v = page.getViewport({ scale: 1 });
-      var vp = page.getViewport({ scale: 900 / v.width });
-      var c = document.createElement('canvas');
-      c.width = Math.round(vp.width); c.height = Math.round(vp.height);
-      var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
-      return page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
-        return c.toDataURL('image/jpeg', 0.82);
+    }).then(function (doc) {
+      return doc.getPage(1).then(function (page) {
+        var v = page.getViewport({ scale: 1 });
+        var vp = page.getViewport({ scale: 720 / v.width });
+        var cv = document.createElement('canvas');
+        cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
+        var ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
+        return page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
+          doc.destroy();
+          return new Promise(function (ok) { cv.toBlob(ok, 'image/jpeg', 0.82); });
+        });
       });
     });
+  }
+  function abrirCache() {
+    try { return 'caches' in window ? caches.open(CACHE_PREVIAS) : Promise.reject(); }
+    catch (e) { return Promise.reject(e); }
+  }
+  function gerarPrevia(url) {
+    if (cachePrevia[url]) return cachePrevia[url];
+    var chave = new URL(url, location.href).href + '?previa=720';
+    cachePrevia[url] = abrirCache()
+      .then(function (cache) { return cache.match(chave); })
+      .catch(function () { return null; })
+      .then(function (res) {
+        if (res) return res.blob();
+        var job = filaPrevias.then(function () {
+          return new Promise(function (ok) { ocioso(ok); });
+        }).then(function () { return renderizarPdf(url); });
+        filaPrevias = job.catch(function () {});
+        return job.then(function (blob) {
+          if (blob) abrirCache().then(function (cache) {
+            return cache.put(chave, new Response(blob, { headers: { 'Content-Type': 'image/jpeg' } }));
+          }).catch(function () {});
+          return blob;
+        });
+      })
+      .then(function (blob) {
+        if (!blob) throw new Error('sem prévia');
+        return URL.createObjectURL(blob);
+      });
     return cachePrevia[url];
   }
   function previaReal(cert, papel) {
-    var src = cert.imagem || null;
-    var p = src ? Promise.resolve(src) : gerarPrevia(cert.arquivo);
-    p.then(function (dataUrl) {
+    if (!cert.imagem && !cert.arquivo) return;
+    var p = cert.imagem ? Promise.resolve(cert.imagem) : gerarPrevia(cert.arquivo);
+    p.then(function (src) {
       var img = new Image();
       img.className = 'cert-thumb';
       img.alt = 'Certificado: ' + cert.titulo;
+      img.decoding = 'async';
       img.onload = function () { papel.classList.add('has-thumb'); };
-      img.src = dataUrl;
+      img.src = src;
       papel.appendChild(img);
-    }).catch(function () { /* sem PDF: mantém a moldura */ });
+    }).catch(function () {
+      // sem conexão para gerar a prévia: mostra só o nome; o PDF abre normalmente
+      papel.classList.add('is-failed');
+      var fb = el('span', 'cert-fallback');
+      fb.appendChild(el('small', null, 'PDF'));
+      fb.appendChild(el('span', null, cert.titulo));
+      papel.appendChild(fb);
+    });
+  }
+  var gradePerto = !('IntersectionObserver' in window);
+  var pendentes = [];
+  function preCarregarResto() {
+    CERTIFICADOS.forEach(function (ct) { if (ct.arquivo && !ct.imagem) gerarPrevia(ct.arquivo); });
+  }
+  if (!gradePerto) {
+    var ioGrade = new IntersectionObserver(function (es) {
+      if (!es.some(function (e) { return e.isIntersecting; })) return;
+      gradePerto = true; ioGrade.disconnect();
+      pendentes.splice(0).forEach(function (f) { f(); });
+      preCarregarResto();
+    }, { rootMargin: '700px 0px' });
+    ioGrade.observe(grade);
   }
 
   /* ---------------------------------------------------------
@@ -1072,7 +1112,10 @@
   gerar();
   var tab = document.getElementById('tab-poo');
   if (tab) tab.addEventListener('click', function () { setTimeout(function () { if (!running) desenhar(); }, 30); });
-  window.addEventListener('resize', function () { if (!running) desenhar(); });
+  var mzT;
+  window.addEventListener('resize', function () {
+    clearTimeout(mzT); mzT = setTimeout(function () { if (!running) desenhar(); }, 150);
+  });
 })();
 
 /* ---- Chat em rede (projeto 05): simulação do protocolo do server.py ---- */
@@ -1160,12 +1203,17 @@
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var c = document.createElement('canvas');
+  var touch = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
   c.className = 'bg-wave'; c.setAttribute('aria-hidden', 'true');
   document.body.insertBefore(c, document.body.firstChild);
   var ctx = c.getContext('2d'), W, H, img, buf, N, PX, PY, PJ, PB, raf;
   function resize() {
-    W = window.innerWidth; H = window.innerHeight;
-    c.width = W; c.height = H;
+    var nw = window.innerWidth, nh = window.innerHeight;
+    if (!nw || !nh) { img = null; return; }
+    // celular: a barra do navegador muda a altura ao rolar; não recria o fundo por isso
+    if (img && nw === W && nh <= H) return;
+    W = nw; H = nh + (touch ? 140 : 0);
+    c.width = W; c.height = H; c.style.height = H + 'px';
     img = ctx.createImageData(W, H); buf = new Uint32Array(img.data.buffer);
     N = Math.min(Math.round(W * H / 75), W < 700 ? 8000 : 22000);
     PX = new Float32Array(N); PY = new Float32Array(N); PJ = new Float32Array(N); PB = new Uint8Array(N);
@@ -1173,9 +1221,12 @@
   }
   // cores (little-endian ABGR): latão e latão claro
   var GAP = 2400, BAND = 0, SPEED = 220;
+  var custo = 0, quadros = 0;
   var R0 = 219, G0 = 169, B0 = 79, R1 = 242, G1 = 205, B1 = 120;
   function frame(now) {
     var t = now * 0.0004;
+    if (!img) { if (!reduce) raf = requestAnimationFrame(frame); if (window.innerWidth && window.innerHeight) resize(); return; }
+    var ts = performance.now();
     buf.fill(0);
     for (var i = 0; i < N; i++) {
       var x = PX[i], y = PY[i];
@@ -1199,6 +1250,9 @@
       if (PB[i]) { buf[k + 1] = col; buf[k + W] = col; buf[k + W + 1] = col; }
     }
     ctx.putImageData(img, 0, 0);
+    // aparelho mais lento: reduz as partículas aos poucos até manter a fluidez
+    custo = custo * 0.94 + (performance.now() - ts) * 0.06;
+    if (++quadros > 90 && custo > 9 && N > 3000) { N = Math.round(N * 0.8); quadros = 0; }
     if (!reduce) raf = requestAnimationFrame(frame);
   }
   resize(); frame(0);
@@ -1207,4 +1261,147 @@
     if (reduce) return;
     if (document.hidden) cancelAnimationFrame(raf); else raf = requestAnimationFrame(frame);
   });
+})();
+
+/* ---- Barra de rolagem dourada animada (telas com mouse) ---- */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
+  var root = document.documentElement; root.classList.add('gold-scroll');
+  var rail = document.createElement('div'); rail.className = 'gold-rail'; rail.setAttribute('aria-hidden', 'true');
+  var thumb = document.createElement('div'); thumb.className = 'gold-thumb';
+  rail.appendChild(thumb); document.body.appendChild(rail);
+  function update() {
+    var vh = window.innerHeight, dh = root.scrollHeight;
+    if (dh <= vh + 1) { rail.style.display = 'none'; return; }
+    rail.style.display = '';
+    var h = Math.max(40, vh * vh / dh);
+    var y = (window.scrollY / (dh - vh)) * (vh - h);
+    thumb.style.height = h + 'px'; thumb.style.transform = 'translateY(' + y + 'px)';
+  }
+  var drag = null;
+  thumb.addEventListener('pointerdown', function (e) {
+    e.preventDefault(); thumb.setPointerCapture(e.pointerId); thumb.classList.add('dragging');
+    drag = { y: e.clientY, s: window.scrollY };
+    root.style.scrollBehavior = 'auto';
+  });
+  thumb.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var vh = window.innerHeight, dh = root.scrollHeight, h = thumb.offsetHeight;
+    window.scrollTo(0, drag.s + (e.clientY - drag.y) * (dh - vh) / (vh - h));
+  });
+  function end() { drag = null; thumb.classList.remove('dragging'); root.style.scrollBehavior = ''; }
+  thumb.addEventListener('pointerup', end); thumb.addEventListener('pointercancel', end);
+  rail.addEventListener('pointerdown', function (e) {
+    if (e.target !== rail) return;
+    var vh = window.innerHeight, dh = root.scrollHeight;
+    window.scrollTo({ top: (e.clientY / vh) * (dh - vh), behavior: 'smooth' });
+  });
+  var uq = false;
+  function agendar() { if (uq) return; uq = true; requestAnimationFrame(function () { uq = false; update(); }); }
+  window.addEventListener('scroll', agendar, { passive: true });
+  window.addEventListener('resize', agendar);
+  if ('ResizeObserver' in window) new ResizeObserver(update).observe(document.body);
+  update();
+})();
+
+/* ---- Cursor bolinha dourada (telas com mouse) ---- */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
+  document.documentElement.classList.add('gold-cursor');
+  var dot = document.createElement('div'); dot.className = 'gold-dot is-hidden'; dot.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(dot);
+  var sel = 'a, button, [role="button"], input, textarea, select, label, .cert-card, .project-tab, .gold-thumb';
+  var px = 0, py = 0, alvo = null, pend = false;
+  function pintar() {
+    pend = false;
+    dot.style.transform = 'translate3d(' + px + 'px,' + py + 'px,0)';
+    dot.classList.remove('is-hidden');
+    dot.classList.toggle('is-hover', !!(alvo && alvo.closest && alvo.closest(sel)));
+  }
+  document.addEventListener('pointermove', function (e) {
+    px = e.clientX; py = e.clientY; alvo = e.target;
+    if (!pend) { pend = true; requestAnimationFrame(pintar); }
+  }, { passive: true });
+  document.documentElement.addEventListener('mouseleave', function () { dot.classList.add('is-hidden'); });
+})();
+
+/* ---- Trajetória: estrada em S ligando os marcos (1ª experiência no início) ---- */
+(function () {
+  var road = document.getElementById('road'); if (!road) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'road-svg'); svg.setAttribute('aria-hidden', 'true');
+  svg.innerHTML = '<defs><linearGradient id="roadGold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000">' +
+    '<stop offset="0" stop-color="#a3742c"/><stop offset=".5" stop-color="#f5d58a"/><stop offset="1" stop-color="#a3742c"/></linearGradient></defs>' +
+    '<path class="road-base"/><path class="road-glow"/>';
+  road.insertBefore(svg, road.firstChild);
+  var base = svg.querySelector('.road-base'), glow = svg.querySelector('.road-glow'), grad = svg.querySelector('linearGradient');
+  var len = 0;
+  function build() {
+    var W = road.clientWidth, lis = road.querySelectorAll('li');
+    if (window.innerWidth <= 760) {
+      // mobile: estrada vertical com leve ondulação ligando os marcos
+      var x = lis[0].offsetLeft - 37 + 5.5, top = lis[0].offsetTop + 10.5, end = lis[lis.length - 1].offsetTop + lis[lis.length - 1].offsetHeight;
+      var dm = 'M' + x + ' ' + top, steps = Math.max(2, Math.round((end - top) / 120));
+      var seg = (end - top) / steps;
+      for (var j = 0; j < steps; j++) {
+        var y0 = top + j * seg, s1 = j % 2 ? -7 : 7;
+        dm += ' C' + (x + s1) + ' ' + (y0 + seg * 0.33) + ' ' + (x + s1) + ' ' + (y0 + seg * 0.66) + ' ' + x + ' ' + (y0 + seg);
+      }
+      base.setAttribute('d', dm); glow.setAttribute('d', dm);
+      grad.setAttribute('y2', road.clientHeight);
+      len = glow.getTotalLength(); glow.style.strokeDasharray = len; progress();
+      return;
+    }
+    var L = 0, R = W, k = 48, d = '';
+    var ys = Array.prototype.map.call(lis, function (li) { return li.offsetTop + 0.5; });
+    for (var i = 0; i < lis.length; i++) {
+      var y = ys[i], ltr = i % 2 === 0;
+      if (i === 0) d = 'M' + L + ' ' + y;
+      if (i === lis.length - 1) { d += ' L' + (ltr ? W * 0.6 : W * 0.4) + ' ' + y; break; }
+      var yn = ys[i + 1];
+      if (ltr) d += ' L' + (R - k) + ' ' + y + ' A' + k + ' ' + k + ' 0 0 1 ' + R + ' ' + (y + k) +
+                    ' L' + R + ' ' + (yn - k) + ' A' + k + ' ' + k + ' 0 0 1 ' + (R - k) + ' ' + yn;
+      else     d += ' L' + (L + k) + ' ' + y + ' A' + k + ' ' + k + ' 0 0 0 ' + L + ' ' + (y + k) +
+                    ' L' + L + ' ' + (yn - k) + ' A' + k + ' ' + k + ' 0 0 0 ' + (L + k) + ' ' + yn;
+    }
+    base.setAttribute('d', d); glow.setAttribute('d', d);
+    grad.setAttribute('y2', road.clientHeight);
+    len = glow.getTotalLength();
+    glow.style.strokeDasharray = len; progress();
+  }
+  function progress() {
+    if (!len) return;
+    var r = road.getBoundingClientRect(), vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / r.height));
+    glow.style.strokeDashoffset = len * (1 - p);
+  }
+  build();
+  window.addEventListener('resize', build);
+  var rq = false;
+  window.addEventListener('scroll', function () {
+    if (rq) return; rq = true;
+    requestAnimationFrame(function () { rq = false; progress(); });
+  }, { passive: true });
+  if ('ResizeObserver' in window) new ResizeObserver(build).observe(road);
+})();
+
+/* ---- Animações douradas só rodam enquanto estão visíveis na tela ---- */
+(function () {
+  if (!document.getAnimations || !('IntersectionObserver' in window)) return;
+  function iniciar() {
+    var mapa = new Map();
+    document.getAnimations().forEach(function (a) {
+      var alvo = a.effect && a.effect.target;
+      if (!alvo || a.animationName !== 'onda' || alvo === document.documentElement) return;
+      if (!mapa.has(alvo)) mapa.set(alvo, []);
+      mapa.get(alvo).push(a);
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        (mapa.get(e.target) || []).forEach(function (a) { if (e.isIntersecting) a.play(); else a.pause(); });
+      });
+    }, { rootMargin: '120px 0px' });
+    mapa.forEach(function (_, alvo) { io.observe(alvo); });
+  }
+  if (document.readyState === 'complete') iniciar(); else window.addEventListener('load', iniciar);
 })();
