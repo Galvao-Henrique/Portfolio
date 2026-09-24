@@ -269,6 +269,18 @@
 
   var CERTIFICADOS = [
     {
+      titulo: 'Google Cybersecurity — Certificado Profissional',
+      emissor: 'Google',
+      plataforma: 'Coursera',
+      data: '28 mar 2025',
+      ano: '2025',
+      categoria: 'Cibersegurança',
+      detalhe: 'Programa completo com 8 cursos',
+      arquivo: 'Certificados/Ciber/Cibersegurança.pdf',
+      imagem: '',
+      verificar: 'https://coursera.org/verify/professional-cert/7CQ2XEZIIX7W'
+    },
+    {
       titulo: 'Programming for Everybody (Getting Started with Python)',
       emissor: 'University of Michigan',
       plataforma: 'Coursera',
@@ -546,7 +558,50 @@
     papel.appendChild(rodape);
 
     btn.appendChild(papel);
+    if (cert.arquivo) previaReal(cert, papel);
     return btn;
+  }
+
+  /* ---- Prévia real: renderiza a 1ª página do PDF original no card ---- */
+  var cachePrevia = {};
+  var pdfjsPromise = null;
+  function carregarPdfjs() {
+    if (!pdfjsPromise) {
+      var base = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/';
+      pdfjsPromise = import(base + 'pdf.min.mjs').then(function (lib) {
+        lib.GlobalWorkerOptions.workerSrc = base + 'pdf.worker.min.mjs';
+        return lib;
+      });
+    }
+    return pdfjsPromise;
+  }
+  function gerarPrevia(url) {
+    if (cachePrevia[url]) return cachePrevia[url];
+    cachePrevia[url] = carregarPdfjs().then(function (lib) {
+      return lib.getDocument(encodeURI(url)).promise;
+    }).then(function (doc) { return doc.getPage(1); }).then(function (page) {
+      var v = page.getViewport({ scale: 1 });
+      var vp = page.getViewport({ scale: 900 / v.width });
+      var c = document.createElement('canvas');
+      c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+      var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+      return page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
+        return c.toDataURL('image/jpeg', 0.82);
+      });
+    });
+    return cachePrevia[url];
+  }
+  function previaReal(cert, papel) {
+    var src = cert.imagem || null;
+    var p = src ? Promise.resolve(src) : gerarPrevia(cert.arquivo);
+    p.then(function (dataUrl) {
+      var img = new Image();
+      img.className = 'cert-thumb';
+      img.alt = 'Certificado: ' + cert.titulo;
+      img.onload = function () { papel.classList.add('has-thumb'); };
+      img.src = dataUrl;
+      papel.appendChild(img);
+    }).catch(function () { /* sem PDF: mantém a moldura */ });
   }
 
   /* ---------------------------------------------------------
@@ -849,10 +904,9 @@
   function fit(v) {
     var f = v.querySelector('iframe'); if (!f) return;
     if (!v.clientWidth) return;
-    // Largura virtual acompanha o dispositivo: celular, tablet ou desktop
+    // Sempre como tela de computador (1440x900), apenas reduzida
     var w = v.clientWidth;
-    var vw = w < 600 ? 390 : (w < 900 ? 1024 : 1440);
-    var vh = w < 600 ? Math.round(390 * 16 / 9) : Math.round(vw * 10 / 16);
+    var vw = 1440, vh = 900;
     var s = w / vw;
     f.style.width = vw + 'px';
     f.style.height = vh + 'px';
@@ -1118,7 +1172,7 @@
     for (var i = 0; i < N; i++) { PX[i] = Math.random() * W; PY[i] = Math.random() * H; PJ[i] = 0.55 + Math.random() * 0.45; PB[i] = Math.random() < 0.35 ? 1 : 0; }
   }
   // cores (little-endian ABGR): latão e latão claro
-  var GAP = 2400, BAND = 0.2, SPEED = 220;
+  var GAP = 2400, BAND = 0, SPEED = 220;
   var R0 = 219, G0 = 169, B0 = 79, R1 = 242, G1 = 205, B1 = 120;
   function frame(now) {
     var t = now * 0.0004;
@@ -1129,12 +1183,10 @@
       var perp = -x * 0.6 + y * 0.8;
       var u = x * 0.8 + y * 0.6 + Math.sin(perp / 340 + t * 0.15) * 70 + Math.sin(perp / 150 - t * 0.2) * 18;
       var f = ((u - t * SPEED) % GAP + GAP) % GAP / GAP;   // 0..1 dentro do ciclo
-      var cr;
-      if (f > BAND) { cr = 0; }
-      else {
-        var q = f / BAND;                                   // frente íngreme, costas suaves
-        cr = q > 0.82 ? (1 - q) / 0.18 : Math.pow(q / 0.82, 1.6);
-      }
+      // perfil único e contínuo: frente íngreme, depois uma cauda longa que se desfaz aos poucos
+      var g = ((BAND - f) % 1 + 1) % 1;                   // 0 = frente da onda, cresce depois que ela passa
+      var cr = g < 0.035 ? g / 0.035 : Math.exp(-(g - 0.035) * 6);
+      if (cr < 0.6 && ((i * 0.618034) % 1) > cr * 1.7) cr = 0;   // cauda vai ficando rala
       var calm = 0.12 + Math.sin(x / 90 + t * 0.3) * Math.sin(y / 110 - t * 0.25) * 0.06;
       var a = (cr > 0 ? 0.02 + cr * 0.42 : 0) * PJ[i];
       if (a < 0.04) { if (PJ[i] > 0.93) a = calm * 0.45; else continue; }
