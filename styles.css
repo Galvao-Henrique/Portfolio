@@ -181,7 +181,7 @@ ul{margin:0;padding:0;list-style:none;}
 }
 
 /* ---------- CONTEÚDO DO HERO ---------- */
-.hero-body{position:relative; flex:1; display:flex; align-items:flex-start; z-index:3; padding:104px 48px 0; transform:none;}
+.hero-body{position:relative; flex:1; display:flex; align-items:flex-start; z-index:3; padding:144px 48px 0; transform:none;}
 .hero-content{max-width:620px;}
 .eyebrow-line{
   width:100%; max-width:480px; height:3px;
