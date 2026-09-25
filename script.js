@@ -239,7 +239,7 @@
    ---------------------------------------------------------
    👇 É AQUI QUE VOCÊ CADASTRA SEUS CERTIFICADOS.
 
-   Coloque os PDFs na pasta "certificados/" (do lado do
+   Coloque os PDFs na pasta "docs/Certificados/" (do lado do
    index.html) e adicione um item na lista abaixo. Pode ter
    quantos quiser: a grade, os filtros, a contagem e a
    paginação se montam sozinhos. A grade mostra 6 por vez
@@ -276,7 +276,7 @@
       ano: '2025',
       categoria: 'Cibersegurança',
       detalhe: 'Programa completo com 8 cursos',
-      arquivo: 'Certificados/Ciber/Cibersegurança.pdf',
+      arquivo: 'docs/Certificados/Ciber/Cibersegurança.pdf',
       imagem: '',
       verificar: 'https://coursera.org/verify/professional-cert/7CQ2XEZIIX7W'
     },
@@ -288,7 +288,7 @@
       ano: '2024',
       categoria: 'Cursos',
       detalhe: 'Programa de cursos integrados',
-      arquivo: 'Certificados/Programming for Everybody (Getting Started with Python).pdf',
+      arquivo: 'docs/Certificados/Programming for Everybody (Getting Started with Python).pdf',
       imagem: '',
       verificar: 'https://coursera.org/verify/GYR6HKYRZJ2O'
     },
@@ -300,7 +300,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Ciência da computação e Python',
-      arquivo: 'Certificados/Introdução à Ciência da Computação com Python Parte 1.pdf',
+      arquivo: 'docs/Certificados/Introdução à Ciência da Computação com Python Parte 1.pdf',
       imagem: '',
       verificar: ''
     },
@@ -312,7 +312,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Ciência da computação e Python',
-      arquivo: 'Certificados/Introdução à Ciência da Computação com Python Parte 2.pdf',
+      arquivo: 'docs/Certificados/Introdução à Ciência da Computação com Python Parte 2.pdf',
       imagem: '',
       verificar: ''
     },
@@ -324,7 +324,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Engenharia de software',
-      arquivo: 'Certificados/Introduction to Software Engineering.pdf',
+      arquivo: 'docs/Certificados/Introduction to Software Engineering.pdf',
       imagem: '',
       verificar: ''
     },
@@ -336,7 +336,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Desenvolvimento web',
-      arquivo: 'Certificados/Introduction to HTML, CSS, & JavaScript.pdf',
+      arquivo: 'docs/Certificados/Introduction to HTML, CSS, & JavaScript.pdf',
       imagem: '',
       verificar: ''
     },
@@ -348,7 +348,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Inteligência artificial',
-      arquivo: 'Certificados/Introduction to Artificial Intelligence (AI).pdf',
+      arquivo: 'docs/Certificados/Introduction to Artificial Intelligence (AI).pdf',
       imagem: '',
       verificar: ''
     },
@@ -360,7 +360,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Inteligência artificial generativa',
-      arquivo: 'Certificados/Generative AI Prompt Engineering Basics.pdf',
+      arquivo: 'docs/Certificados/Generative AI Prompt Engineering Basics.pdf',
       imagem: '',
       verificar: ''
     },
@@ -372,7 +372,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Inteligência artificial generativa',
-      arquivo: 'Certificados/Generative AI Introduction and Applications.pdf',
+      arquivo: 'docs/Certificados/Generative AI Introduction and Applications.pdf',
       imagem: '',
       verificar: ''
     },
@@ -384,7 +384,7 @@
       ano: '',
       categoria: 'Cursos',
       detalhe: 'Fundamentos de dados',
-      arquivo: 'Certificados/Foundations Data, Data, Everywhere.pdf',
+      arquivo: 'docs/Certificados/Foundations Data, Data, Everywhere.pdf',
       imagem: '',
       verificar: ''
     },
@@ -396,7 +396,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Fundamentos de cibersegurança',
-      arquivo: 'Certificados/Ciber/Foundations of Cybersecurity.pdf',
+      arquivo: 'docs/Certificados/Ciber/Foundations of Cybersecurity.pdf',
       imagem: '',
       verificar: ''
     },
@@ -408,7 +408,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Ativos, ameaças e vulnerabilidades',
-      arquivo: 'Certificados/Ciber/Assets, Threats, and Vulnerabilities.pdf',
+      arquivo: 'docs/Certificados/Ciber/Assets, Threats, and Vulnerabilities.pdf',
       imagem: '',
       verificar: ''
     },
@@ -420,7 +420,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Redes e segurança de redes',
-      arquivo: 'Certificados/Ciber/Connect and Protect Networks and Network.pdf',
+      arquivo: 'docs/Certificados/Ciber/Connect and Protect Networks and Network.pdf',
       imagem: '',
       verificar: ''
     },
@@ -432,7 +432,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Linux e SQL',
-      arquivo: 'Certificados/Ciber/Tools of the Trade Linux and SQL.pdf',
+      arquivo: 'docs/Certificados/Ciber/Tools of the Trade Linux and SQL.pdf',
       imagem: '',
       verificar: ''
     },
@@ -444,7 +444,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Detecção e resposta',
-      arquivo: 'Certificados/Ciber/Sound the Alarm Detection and Response.pdf',
+      arquivo: 'docs/Certificados/Ciber/Sound the Alarm Detection and Response.pdf',
       imagem: '',
       verificar: ''
     },
@@ -456,7 +456,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Automação com Python',
-      arquivo: 'Certificados/Ciber/Automate Cybersecurity Tasks with Python.pdf',
+      arquivo: 'docs/Certificados/Ciber/Automate Cybersecurity Tasks with Python.pdf',
       imagem: '',
       verificar: ''
     },
@@ -468,7 +468,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Preparação para carreira em cibersegurança',
-      arquivo: 'Certificados/Ciber/Put It to Work Prepare for Cybersecurity Jobs.pdf',
+      arquivo: 'docs/Certificados/Ciber/Put It to Work Prepare for Cybersecurity Jobs.pdf',
       imagem: '',
       verificar: ''
     },
@@ -480,7 +480,7 @@
       ano: '',
       categoria: 'Cibersegurança',
       detalhe: 'Gestão de riscos de segurança',
-      arquivo: 'Certificados/Ciber/Play It Safe Manage Security Risks.pdf',
+      arquivo: 'docs/Certificados/Ciber/Play It Safe Manage Security Risks.pdf',
       imagem: '',
       verificar: ''
     }
@@ -563,19 +563,20 @@
     }
     return pdfjsPromise;
   }
-  function renderizarPdf(url) {
+  function renderizarPdf(url, largura, qualidade) {
+    largura = largura || 720;
     return carregarPdfjs().then(function (lib) {
       return lib.getDocument(encodeURI(url)).promise;
     }).then(function (doc) {
       return doc.getPage(1).then(function (page) {
         var v = page.getViewport({ scale: 1 });
-        var vp = page.getViewport({ scale: 720 / v.width });
+        var vp = page.getViewport({ scale: largura / v.width });
         var cv = document.createElement('canvas');
         cv.width = Math.round(vp.width); cv.height = Math.round(vp.height);
         var ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height);
         return page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
           doc.destroy();
-          return new Promise(function (ok) { cv.toBlob(ok, 'image/jpeg', 0.82); });
+          return new Promise(function (ok) { cv.toBlob(ok, 'image/jpeg', qualidade || 0.82); });
         });
       });
     });
@@ -742,8 +743,15 @@
     atual = i;
 
     tituloEl.textContent = cert.titulo;
-    metaEl.textContent = [cert.emissor, cert.plataforma, cert.data || cert.ano, cert.detalhe]
-      .filter(Boolean).join(' — ');
+    metaEl.textContent = '';
+    if (cert.emissor) {
+      var em = document.createElement('span');
+      em.className = 'cert-viewer-emissor';
+      em.textContent = cert.emissor;
+      metaEl.appendChild(em);
+    }
+    var resto = [cert.plataforma, cert.data || cert.ano, cert.detalhe].filter(Boolean).join(' — ');
+    if (resto) metaEl.appendChild(document.createTextNode((cert.emissor ? ' — ' : '') + resto));
     contaEl.textContent = (i + 1) + ' de ' + lista.length;
 
     frame.innerHTML = '';
@@ -753,10 +761,31 @@
       img.alt = 'Certificado: ' + cert.titulo;
       frame.appendChild(img);
     } else {
-      var iframe = document.createElement('iframe');
-      iframe.src = cert.arquivo + '#view=FitH&toolbar=0';
-      iframe.title = 'Certificado: ' + cert.titulo;
-      frame.appendChild(iframe);
+      var token = (frame._token = (frame._token || 0) + 1);
+      var load = document.createElement('div');
+      load.className = 'cert-viewer-loading';
+      load.textContent = 'Carregando certificado…';
+      frame.appendChild(load);
+      // Mostra a prévia já gerada na hora, depois troca pela versão nítida
+      var pImg = document.createElement('img');
+      pImg.alt = 'Certificado: ' + cert.titulo;
+      gerarPrevia(cert.arquivo).then(function (src) {
+        if (frame._token !== token) return;
+        pImg.src = src; if (!pImg.parentNode) { frame.innerHTML = ''; frame.appendChild(pImg); }
+      }).catch(function () {});
+      var alta = Math.min(2400, Math.round(Math.max(frame.clientWidth, frame.clientHeight * 1.42) * (window.devicePixelRatio || 1)));
+      renderizarPdf(cert.arquivo, Math.max(1200, alta), 0.92).then(function (blob) {
+        if (frame._token !== token || !blob) return;
+        pImg.src = URL.createObjectURL(blob);
+        if (!pImg.parentNode) { frame.innerHTML = ''; frame.appendChild(pImg); }
+      }).catch(function () {
+        if (frame._token !== token || pImg.parentNode) return;
+        frame.innerHTML = '';
+        var iframe = document.createElement('iframe');
+        iframe.src = cert.arquivo + '#view=Fit&toolbar=0';
+        iframe.title = 'Certificado: ' + cert.titulo;
+        frame.appendChild(iframe);
+      });
     }
 
     btnAbrir.href = cert.arquivo;
@@ -1404,4 +1433,14 @@
     mapa.forEach(function (_, alvo) { io.observe(alvo); });
   }
   if (document.readyState === 'complete') iniciar(); else window.addEventListener('load', iniciar);
+})();
+
+/* ---- Placeholder "Digite aqui" com 3 pontos animados ---- */
+(function () {
+  var el = document.getElementById('rsa-in'); if (!el) return;
+  var n = 0;
+  setInterval(function () {
+    n = (n + 1) % 4;
+    el.placeholder = 'Digite aqui' + '...'.slice(0, n);
+  }, 450);
 })();
