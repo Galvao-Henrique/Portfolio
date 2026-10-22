@@ -57,7 +57,7 @@
     <div class="hero-content">
       <div class="eyebrow-line reveal reveal-line"></div>
       <h1 class="reveal reveal-heading">Eu sou o <span class="name-accent">Henrique</span>.<br>Tudo Bem?</h1>
-      <p class="lead reveal reveal-lead">Estudante de Ciência da Computação na Universidade Paulista. Escrevo front-end e back-end, estudo modelagem de dados e procuro meu primeiro estágio como desenvolvedor.</p>
+      <p class="lead reveal reveal-lead">Estudante de Ciência da Computação na Universidade Paulista. Trabalho de ponta a ponta, da tela que o usuário toca ao banco que guarda tudo, com a IA como parceira de código.<span class="lead-swap" id="leadSwap" aria-hidden="true"><span class="lead-prompt">&gt; construo</span> <span class="lead-word">SaaS inteiros</span><span class="lead-caret"></span></span><span class="sr-only">Construo interfaces, APIs, bancos de dados e SaaS inteiros.</span></p>
 
       <div class="hero-actions reveal reveal-button">
         <a class="hero-work-link" href="#projetos">Conheça meu trabalho <span aria-hidden="true">→</span></a>
@@ -464,19 +464,100 @@
       </div>
 
       <div class="project-row fx" data-cat="profissional">
-        <button class="project-tab" id="tab-pessoal" role="tab" aria-selected="false" aria-controls="painel-pessoal" tabindex="-1">
+        <button class="project-tab" id="tab-convivo" role="tab" aria-selected="false" aria-controls="painel-convivo" tabindex="-1">
           <span class="project-num">02</span>
-          <span class="project-title">Projeto <span class="shimmer-gold">pessoal</span></span>
+          <span class="project-title"><span class="shimmer-gold">Convivo</span>, SaaS de gestão de condomínio</span>
+          <span class="project-tab-meta">2026 · <span class="project-status">No ar</span></span>
+          <span class="project-caret" aria-hidden="true"></span>
+        </button>
+        <article class="project-panel" id="painel-convivo" role="tabpanel" aria-labelledby="tab-convivo" tabindex="0" hidden>
+          <p class="project-summary">Aplicativo para o dono do imóvel administrar o condomínio sem contratar uma administradora. Ele tem três perfis (proprietário, síndico e morador) e cuida de boletos com Pix e QR Code, encomendas, reservas, comunicados, contratos de aluguel, régua de cobrança automática e importação de planilhas. Fiz o projeto inteiro, da tela ao banco, e ele já está em produção com cliente real.</p>
+          <p class="project-note">A segurança não fica nas telas, fica no próprio PostgreSQL, com Row Level Security. Mesmo que alguém chame a API direto, o banco só entrega e só aceita o que aquele perfil pode ver. O teste abaixo mostra a mesma consulta feita por três pessoas diferentes.</p>
+          <div class="rls-demo" id="rls-demo">
+            <div class="rsa-head">
+              <span class="rsa-tag">Teste na prática · Row Level Security</span>
+              <span class="rls-sql">select * from boletos</span>
+            </div>
+            <div class="maze-seg rls-roles" role="group" aria-label="Ver como">
+              <button type="button" class="maze-opt is-on" data-papel="proprietario" aria-pressed="true">Proprietário</button>
+              <button type="button" class="maze-opt" data-papel="sindico" aria-pressed="false">Síndico</button>
+              <button type="button" class="maze-opt" data-papel="morador" aria-pressed="false">Morador · apto 12</button>
+            </div>
+            <div class="rls-table" role="table" aria-label="Boletos de outubro">
+              <div class="rls-tr rls-th" role="row">
+                <span role="columnheader">Apto</span><span role="columnheader">Valor</span><span role="columnheader">Status</span><span role="columnheader">Comprovante</span>
+              </div>
+              <div id="rls-rows"></div>
+            </div>
+            <div class="rls-actions">
+              <button type="button" class="rsa-btn" id="rls-baixa">Dar baixa no apto 13</button>
+              <button type="button" class="rsa-regen" id="rls-ler-tudo">Tentar ler todos os boletos pela API ↗</button>
+            </div>
+            <div class="chat-srv-log rls-log" id="rls-log" aria-live="polite"></div>
+          </div>
+          <div class="project-bottom">
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Dar ao dono do imóvel tudo o que uma administradora faz, com a segurança dos dados garantida no banco.</dd></div>
+          </dl>
+          <div class="project-links">
+            <a class="btn-ghost" href="https://adm-six-theta.vercel.app" target="_blank" rel="noopener">Abrir o app ↗</a>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Next.js 16</li><li>TypeScript</li><li>Supabase</li><li>PostgreSQL + RLS</li><li>pg_cron</li><li>Tailwind</li><li>PWA</li><li>Vitest</li><li>Playwright</li>
+          </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-row fx" data-cat="profissional">
+        <button class="project-tab" id="tab-atena" role="tab" aria-selected="false" aria-controls="painel-atena" tabindex="-1">
+          <span class="project-num">03</span>
+          <span class="project-title"><span class="shimmer-gold">Atena</span>, consultório digital</span>
           <span class="project-tab-meta">2026 · <span class="project-status is-wip">Em desenvolvimento</span></span>
           <span class="project-caret" aria-hidden="true"></span>
         </button>
-        <article class="project-panel" id="painel-pessoal" role="tabpanel" aria-labelledby="tab-pessoal" tabindex="0" hidden>
-          <p class="project-summary">Projeto pessoal em desenvolvimento. Detalhes em breve.</p>
-          <div class="project-preview"><image-slot id="preview-pessoal" shape="rect" placeholder="Arraste aqui um print do projeto"></image-slot></div>
-          <div class="project-bottom">
-          <div class="project-links">
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Ver no GitHub →</a>
+        <article class="project-panel" id="painel-atena" role="tabpanel" aria-labelledby="tab-atena" tabindex="0" hidden>
+          <p class="project-summary">Um consultório digital, tanto para o profissional que atende sozinho quanto para quem já tem um consultório com equipe. Funciona no navegador e no aplicativo e junta agenda com sessões recorrentes, teleatendimento por vídeo, prontuário clínico criptografado, lembretes por e-mail e WhatsApp, cobrança integrada e portal do paciente. Desenvolvo o projeto em equipe, em um monorepo com testes automáticos de banco e de interface.</p>
+          <p class="project-note">Prontuário de psicologia é um dado sensível pela LGPD. Por isso, cada anotação é cifrada com AES-256-GCM antes de chegar ao banco. O teste abaixo usa a criptografia real do seu navegador (Web Crypto) para mostrar o que fica gravado e o que cada pessoa consegue ler.</p>
+          <div class="cripto-demo" id="cripto-demo">
+            <div class="rsa-head">
+              <span class="rsa-tag">Teste na prática · prontuário cifrado</span>
+              <button type="button" class="rsa-regen" id="cripto-chave">Nova chave ↻</button>
+            </div>
+            <label class="rsa-label" for="cripto-in">Anotação da sessão</label>
+            <textarea class="rsa-input" id="cripto-in" rows="3" maxlength="400">Paciente relatou melhora no sono após a terceira sessão. Retomar o tema da ansiedade no trabalho.</textarea>
+            <button type="button" class="rsa-btn cripto-salvar" id="cripto-salvar">Salvar anotação</button>
+            <div class="cripto-grid">
+              <div class="cripto-box">
+                <span class="rsa-k">O que fica gravado no banco</span>
+                <output class="rsa-out" id="cripto-banco">—</output>
+              </div>
+              <div class="cripto-box">
+                <span class="rsa-k">Quem está lendo</span>
+                <div class="maze-seg" role="group" aria-label="Quem está lendo">
+                  <button type="button" class="maze-opt is-on" data-leitor="psi" aria-pressed="true">Psicóloga</button>
+                  <button type="button" class="maze-opt" data-leitor="outro" aria-pressed="false">Outro profissional</button>
+                  <button type="button" class="maze-opt" data-leitor="ia" aria-pressed="false">Assistente de IA</button>
+                </div>
+                <output class="rsa-out cripto-leitura" id="cripto-leitura">—</output>
+              </div>
+            </div>
+            <p class="rsa-err" id="cripto-err" role="alert"></p>
           </div>
+          <div class="project-bottom">
+          <div class="project-meta-row">
+          <dl class="project-facts">
+            <div><dt>Objetivo</dt><dd>Tirar a burocracia do consultório sem abrir mão do sigilo clínico.</dd></div>
+          </dl>
+          <div class="project-links">
+            <span class="project-private">Repositório privado</span>
+          </div>
+          </div>
+          <ul class="tech">
+            <li>Next.js 15</li><li>React Native (Expo)</li><li>TypeScript</li><li>Supabase</li><li>RLS + pgTAP</li><li>AES-256-GCM</li><li>Turborepo</li><li>MCP</li>
+          </ul>
           </div>
         </article>
       </div>

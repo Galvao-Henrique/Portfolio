@@ -1195,6 +1195,159 @@
   reset();
 })();
 
+/* ---- Hero: palavra que se reescreve ---- */
+(function () {
+  var root = document.getElementById('leadSwap');
+  if (!root) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var alvo = root.querySelector('.lead-word');
+  var PALAVRAS = ['interfaces', 'APIs', 'bancos de dados', 'SaaS inteiros'];
+  var i = 0, txt = '', apagando = false;
+  alvo.textContent = '';
+  function passo() {
+    var p = PALAVRAS[i];
+    if (!apagando) {
+      txt = p.slice(0, txt.length + 1);
+      alvo.textContent = txt;
+      if (txt === p) { apagando = true; return setTimeout(passo, i === PALAVRAS.length - 1 ? 3200 : 1600); }
+      return setTimeout(passo, 70);
+    }
+    txt = txt.slice(0, -1);
+    alvo.textContent = txt;
+    if (!txt) { apagando = false; i = (i + 1) % PALAVRAS.length; return setTimeout(passo, 260); }
+    setTimeout(passo, 35);
+  }
+  setTimeout(passo, 1200);
+})();
+
+/* ---- Convivo: mesma consulta, três perfis (RLS) ---- */
+(function () {
+  var root = document.getElementById('rls-demo');
+  if (!root) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var log = $('rls-log'), rowsEl = $('rls-rows');
+  var BOLETOS = [
+    { apto: '11', valor: 'R$ 640,00', status: 'pago' },
+    { apto: '12', valor: 'R$ 640,00', status: 'aberto' },
+    { apto: '13', valor: 'R$ 712,50', status: 'analise' },
+    { apto: '21', valor: 'R$ 640,00', status: 'pago' },
+    { apto: '22', valor: 'R$ 698,20', status: 'aberto' }
+  ];
+  var ROTULO = { pago: ['Pago', 'ok'], aberto: ['Em aberto', 'ab'], analise: ['Já paguei', 'an'] };
+  var papel = 'proprietario';
+
+  function linha(html, cls) {
+    var d = document.createElement('div'); d.innerHTML = html; if (cls) d.className = cls;
+    log.appendChild(d); log.scrollTop = log.scrollHeight;
+  }
+  function visiveis() { return papel === 'morador' ? BOLETOS.filter(function (b) { return b.apto === '12'; }) : BOLETOS; }
+  function desenhar() {
+    rowsEl.innerHTML = '';
+    visiveis().forEach(function (b) {
+      var r = document.createElement('div'); r.className = 'rls-tr'; r.setAttribute('role', 'row');
+      var comp = papel === 'sindico' ? '<span class="rls-hide">oculto p/ síndico</span>'
+        : (b.status === 'aberto' ? '<span class="rls-hide">—</span>' : '<span class="mono">comprovante.pdf</span>');
+      r.innerHTML = '<span class="mono" role="cell">' + b.apto + '</span><span class="mono" role="cell">' + b.valor +
+        '</span><span role="cell"><span class="rls-tag ' + ROTULO[b.status][1] + '">' + ROTULO[b.status][0] + '</span></span><span role="cell">' + comp + '</span>';
+      rowsEl.appendChild(r);
+    });
+    var n = visiveis().length;
+    linha('<span class="b">' + papel + '</span> → select * from boletos <span class="g">→ ' + n + (n === 1 ? ' linha' : ' linhas') + '</span>');
+    $('rls-baixa').textContent = papel === 'morador' ? 'Dar baixa no meu boleto' : 'Dar baixa no apto 13';
+  }
+  function baixa() {
+    if (papel === 'proprietario') {
+      var b = BOLETOS[2];
+      if (b.status === 'pago') { linha('update boletos (apto 13) <span class="g">→ já estava pago</span>'); return; }
+      b.status = 'pago';
+      linha('update boletos set status = \'pago\' where apto = 13 <span class="g">→ 1 linha alterada</span>');
+      desenhar();
+    } else {
+      linha('update boletos ... <span class="r">→ ERRO 42501: a política de segurança recusou (' + papel + ' não dá baixa)</span>');
+    }
+  }
+  function lerTudo() {
+    if (papel === 'morador') linha('GET /rest/v1/boletos?select=* <span class="r">→ a API respondeu só 1 linha: o banco filtrou o resto</span>');
+    else if (papel === 'sindico') linha('GET /rest/v1/boletos?select=comprovante <span class="r">→ coluna bloqueada para síndico</span>');
+    else linha('GET /rest/v1/boletos?select=* <span class="g">→ ' + BOLETOS.length + ' linhas, só deste condomínio</span>');
+  }
+
+  Array.prototype.forEach.call(root.querySelectorAll('[data-papel]'), function (btn) {
+    btn.addEventListener('click', function () {
+      papel = btn.dataset.papel;
+      Array.prototype.forEach.call(root.querySelectorAll('[data-papel]'), function (o) {
+        var on = o === btn; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', on);
+      });
+      desenhar();
+    });
+  });
+  $('rls-baixa').addEventListener('click', baixa);
+  $('rls-ler-tudo').addEventListener('click', lerTudo);
+  desenhar();
+})();
+
+/* ---- Atena: prontuário cifrado com AES-256-GCM (Web Crypto) ---- */
+(function () {
+  var root = document.getElementById('cripto-demo');
+  if (!root) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var err = $('cripto-err'), banco = $('cripto-banco'), leitura = $('cripto-leitura');
+  var subtle = window.crypto && window.crypto.subtle;
+  var chave = null, gravado = null, leitor = 'psi';
+
+  function b64(buf) { var s = ''; new Uint8Array(buf).forEach(function (x) { s += String.fromCharCode(x); }); return btoa(s); }
+  function esc(t) { return t.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function novaChave() {
+    gravado = null;
+    banco.textContent = '—';
+    return subtle.generateKey({ name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']).then(function (k) { chave = k; });
+  }
+  function salvar() {
+    var texto = $('cripto-in').value.trim();
+    err.textContent = '';
+    if (!texto) { err.textContent = 'Escreva alguma coisa antes de salvar.'; return; }
+    var iv = window.crypto.getRandomValues(new Uint8Array(12));
+    subtle.encrypt({ name: 'AES-GCM', iv: iv }, chave, new TextEncoder().encode(texto)).then(function (c) {
+      gravado = { iv: iv, dados: c };
+      banco.textContent = '{ "iv": "' + b64(iv) + '", "conteudo": "' + b64(c) + '" }';
+      mostrar();
+    });
+  }
+  function mostrar() {
+    if (!gravado) { leitura.innerHTML = '<span class="rls-hide">Salve uma anotação primeiro.</span>'; return; }
+    if (leitor === 'outro') {
+      leitura.innerHTML = 'Nenhum registro encontrado.<span class="rls-hide">A RLS não entrega prontuários de pacientes de outro profissional.</span>';
+      return;
+    }
+    if (leitor === 'ia') {
+      leitura.innerHTML = 'Agenda de hoje: <strong>C. L.</strong> às 14h, sessão 3 confirmada.<span class="rls-hide">O assistente (MCP) só lê a agenda, vê o paciente pelas iniciais e não tem acesso ao prontuário.</span>';
+      return;
+    }
+    subtle.decrypt({ name: 'AES-GCM', iv: gravado.iv }, chave, gravado.dados).then(function (p) {
+      leitura.innerHTML = esc(new TextDecoder().decode(p)) + '<span class="rls-hide">Decifrado no servidor com a chave da psicóloga.</span>';
+    });
+  }
+
+  if (!subtle) {
+    err.textContent = 'Este navegador não liberou a criptografia (Web Crypto). Abra o site por https para testar.';
+    $('cripto-salvar').disabled = true;
+    return;
+  }
+  Array.prototype.forEach.call(root.querySelectorAll('[data-leitor]'), function (btn) {
+    btn.addEventListener('click', function () {
+      leitor = btn.dataset.leitor;
+      Array.prototype.forEach.call(root.querySelectorAll('[data-leitor]'), function (o) {
+        var on = o === btn; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', on);
+      });
+      mostrar();
+    });
+  });
+  $('cripto-salvar').addEventListener('click', salvar);
+  $('cripto-chave').addEventListener('click', function () { novaChave().then(mostrar); });
+  novaChave().then(salvar);
+})();
+
 /* ---- Abas: projetos acadêmicos / profissionais ---- */
 (function () {
   var btns = document.querySelectorAll('.project-cat');
