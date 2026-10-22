@@ -57,7 +57,7 @@
     <div class="hero-content">
       <div class="eyebrow-line reveal reveal-line"></div>
       <h1 class="reveal reveal-heading">Eu sou o <span class="name-accent">Henrique</span>.<br>Tudo Bem?</h1>
-      <p class="lead reveal reveal-lead">Estudante de Ciência da Computação na Universidade Paulista. Trabalho de ponta a ponta, da tela que o usuário toca ao banco que guarda tudo, com a IA como parceira de código.<span class="lead-swap" id="leadSwap" aria-hidden="true"><span class="lead-prompt">&gt; construo</span> <span class="lead-word">SaaS inteiros</span><span class="lead-caret"></span></span><span class="sr-only">Construo interfaces, APIs, bancos de dados e SaaS inteiros.</span></p>
+      <p class="lead reveal reveal-lead">Estudante de Ciência da Computação na Universidade Paulista. Trabalho de ponta a ponta, da tela que o usuário toca ao banco que guarda tudo.</p>
 
       <div class="hero-actions reveal reveal-button">
         <a class="hero-work-link" href="#projetos">Conheça meu trabalho <span aria-hidden="true">→</span></a>
@@ -466,12 +466,12 @@
       <div class="project-row fx" data-cat="profissional">
         <button class="project-tab" id="tab-convivo" role="tab" aria-selected="false" aria-controls="painel-convivo" tabindex="-1">
           <span class="project-num">02</span>
-          <span class="project-title"><span class="shimmer-gold">Convivo</span>, SaaS de gestão de condomínio</span>
-          <span class="project-tab-meta">2026 · <span class="project-status">No ar</span></span>
+          <span class="project-title"><span class="shimmer-gold">Convivenza</span>, SaaS de gestão condominial</span>
+          <span class="project-tab-meta">2026 · <span class="project-status is-wip">Em testes</span></span>
           <span class="project-caret" aria-hidden="true"></span>
         </button>
         <article class="project-panel" id="painel-convivo" role="tabpanel" aria-labelledby="tab-convivo" tabindex="0" hidden>
-          <p class="project-summary">Aplicativo para o dono do imóvel administrar o condomínio sem contratar uma administradora. Ele tem três perfis (proprietário, síndico e morador) e cuida de boletos com Pix e QR Code, encomendas, reservas, comunicados, contratos de aluguel, régua de cobrança automática e importação de planilhas. Fiz o projeto inteiro, da tela ao banco, e ele já está em produção com cliente real.</p>
+          <p class="project-summary">Aplicativo para o dono do imóvel administrar o condomínio sem contratar uma administradora. Ele tem três perfis (proprietário, síndico e morador) e cuida de boletos com Pix e QR Code, encomendas, reservas, comunicados, contratos de aluguel, régua de cobrança automática e importação de planilhas. Fiz o projeto inteiro, da tela ao banco, e ele está em fase final, com testes junto a usuários reais.</p>
           <p class="project-note">A segurança não fica nas telas, fica no próprio PostgreSQL, com Row Level Security. Mesmo que alguém chame a API direto, o banco só entrega e só aceita o que aquele perfil pode ver. O teste abaixo mostra a mesma consulta feita por três pessoas diferentes.</p>
           <div class="rls-demo" id="rls-demo">
             <div class="rsa-head">
@@ -519,7 +519,7 @@
           <span class="project-caret" aria-hidden="true"></span>
         </button>
         <article class="project-panel" id="painel-atena" role="tabpanel" aria-labelledby="tab-atena" tabindex="0" hidden>
-          <p class="project-summary">Um consultório digital, tanto para o profissional que atende sozinho quanto para quem já tem um consultório com equipe. Funciona no navegador e no aplicativo e junta agenda com sessões recorrentes, teleatendimento por vídeo, prontuário clínico criptografado, lembretes por e-mail e WhatsApp, cobrança integrada e portal do paciente. Desenvolvo o projeto em equipe, em um monorepo com testes automáticos de banco e de interface.</p>
+          <p class="project-summary">Um consultório digital, tanto para o profissional que atende sozinho quanto para quem já tem um consultório com equipe. Funciona no navegador e no aplicativo e junta agenda com sessões recorrentes, teleatendimento por vídeo, prontuário clínico criptografado, lembretes por e-mail e WhatsApp, cobrança integrada e portal do paciente. Começa pela psicologia, com expansão prevista para outras áreas, e está em finalização, com testes e feedback de usuários e de psicólogos.</p>
           <p class="project-note">Prontuário de psicologia é um dado sensível pela LGPD. Por isso, cada anotação é cifrada com AES-256-GCM antes de chegar ao banco. O teste abaixo usa a criptografia real do seu navegador (Web Crypto) para mostrar o que fica gravado e o que cada pessoa consegue ler.</p>
           <div class="cripto-demo" id="cripto-demo">
             <div class="rsa-head">

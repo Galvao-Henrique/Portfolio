@@ -1195,31 +1195,6 @@
   reset();
 })();
 
-/* ---- Hero: palavra que se reescreve ---- */
-(function () {
-  var root = document.getElementById('leadSwap');
-  if (!root) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var alvo = root.querySelector('.lead-word');
-  var PALAVRAS = ['interfaces', 'APIs', 'bancos de dados', 'SaaS inteiros'];
-  var i = 0, txt = '', apagando = false;
-  alvo.textContent = '';
-  function passo() {
-    var p = PALAVRAS[i];
-    if (!apagando) {
-      txt = p.slice(0, txt.length + 1);
-      alvo.textContent = txt;
-      if (txt === p) { apagando = true; return setTimeout(passo, i === PALAVRAS.length - 1 ? 3200 : 1600); }
-      return setTimeout(passo, 70);
-    }
-    txt = txt.slice(0, -1);
-    alvo.textContent = txt;
-    if (!txt) { apagando = false; i = (i + 1) % PALAVRAS.length; return setTimeout(passo, 260); }
-    setTimeout(passo, 35);
-  }
-  setTimeout(passo, 1200);
-})();
-
 /* ---- Convivo: mesma consulta, três perfis (RLS) ---- */
 (function () {
   var root = document.getElementById('rls-demo');
